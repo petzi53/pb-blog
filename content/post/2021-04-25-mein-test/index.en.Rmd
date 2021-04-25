@@ -1,0 +1,23 @@
+---
+title: Mein Test
+author: Peter Baumgartner
+date: '2021-04-25'
+slug: mein-test
+categories: []
+tags: []
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2021-04-25T12:40:03+02:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+<img class="border shadow" src="/post/2021-04-25-mein-test/assets/extensity.png" alt="" />
+
+
+
