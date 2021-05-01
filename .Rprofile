@@ -8,7 +8,7 @@ options(
   blogdown.knit.on_save = FALSE,
   blogdown.new_bundle = TRUE,
   blogdown.author = "Peter Baumgartner",
-  blogdown.ext = ".Rmarkdown",
+  blogdown.ext = ".Rmd", # '.Rmarkdown'
   # blogdown.method = 'markdown',
   blogdown.subdir = "post"
 )
