@@ -6,10 +6,10 @@ if (file.exists("~/.Rprofile")) {
 options(
   blogdown.serve_site.startup = FALSE,
   blogdown.knit.on_save = FALSE,
-  blogdown.new_bundle = FALSE,
+  blogdown.new_bundle = TRUE,
   blogdown.author = "Peter Baumgartner",
-  blogdown.ext = ".Rmd",
-  blogdown.method = 'markdown',
+  blogdown.ext = ".Rmarkdown",
+  # blogdown.method = 'markdown',
   blogdown.subdir = "post"
 )
 
