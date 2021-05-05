@@ -38,11 +38,15 @@ Anyway, I looked into `emo,` and it turned out that it offers some useful functi
 
 3.  If you are using keywords, the command `emo::ji(<keyword>)` will randomly pick one.
 
-```{r emoji-random, results='hold'}
+```{r emoji-random, results='hold', eval=FALSE}
 emo::ji("face")
 emo::ji("face")
 emo::ji("face")
 
 ```
+
+    ## 😈
+    ## 💆 
+    ## 👼 
 
 To identify, you have to use the short name of the [Common Local Data Repository](http://cldr.unicode.org/) (CDLR) included in the `emojis_df`. If you want to use emojis with a particular skin tone, you have to use the alias name as the CDLR name produces an error. Instead of looking up an emoji within the above-created data frame `emojis_df`, I found it more practicable to search in the official [Unicode Emoji List](https://www.unicode.org/emoji/charts/emoji-list.html). It has not so many different columns but focuses on icon display and CLDR short name.
