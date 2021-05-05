@@ -14,9 +14,231 @@
 	padding-right: 20px;
 }
 
+figure, div.figure {
+        border: 1px;
+        border-style: groove;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px  rgba(0, 0, 0, 0.19);
+}
+
+div.figure + p { margin-top: 20px; }
+
+.myfigure {
+    border: 20px;
+}
+
 p.caption {
     text-align: center;
-    margin-top: -2rem;
-    margin-bottom: 2rem;
-    font-size: x-small;
+    margin-top: -0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: smaller;
 }
+
+figcaption {
+    text-align: center;
+    padding-top: 1.5rem;
+    font-size: smaller;
+}
+
+.shadowed {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+blockquote {
+    border-left: 10px solid #F0F2F4;
+}
+blockquote p {
+    font-size: 1.1rem;
+    color: #999;
+}
+blockquote cite {
+    display: block;
+    text-align: right;
+    color: #666;
+    font-size: 1.2rem;
+}
+div.notices {
+    margin: 2rem 0;
+    position: relative;
+}
+div.notices p {
+    padding: 15px;
+    display: block;
+    font-size: 1rem;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+    color: #666;
+}
+div.notices p:first-child:before {
+    position: absolute;
+    top: -27px;
+    color: #fff;
+    font-family: FontAwesome;
+    content: '';
+    left: 10px;
+}
+div.notices p:first-child:after {
+    position: absolute;
+    top: -27px;
+    color: #fff;
+    left: 2rem;
+}
+div.notices.info {
+    border-top: 30px solid #F0B37E;
+    background: #FFF2DB;
+}
+div.notices.info p:first-child:after {
+    content: 'Info';
+}
+div.notices.warning {
+    border-top: 30px solid rgba(217, 83, 79, 0.8);
+    background: #FAE2E2;
+}
+div.notices.warning p:first-child:after {
+    content: 'Warning';
+}
+div.notices.note {
+    border-top: 30px solid #6AB0DE;
+    background: #E7F2FA;
+}
+div.notices.note p:first-child:after {
+    content: 'Note';
+}
+div.notices.tip {
+    border-top: 30px solid rgba(92, 184, 92, 0.8);
+    background: #E6F9E6;
+}
+div.notices.tip p:first-child:after {
+    content: 'Tip';
+}
+
+/* https://github.com/gcushen/hugo-academic/issues/147 */
+.container {
+  max-width: 1000px;
+}
+
+/* For 2-column article layout with TOC on right */
+.article-container {
+	max-width: 1000px;
+}
+
+.col-lg-2ish {
+  flex:0 0 20%;
+  max-width:20%;
+  padding-right: 0px !important;
+ }
+
+.col-lg-10ish {
+  flex:0 0 80%;
+  max-width:80%;
+ }
+
+#TableOfContents li a, .toc-top li a {
+	padding: .125rem .5rem;
+	font-size: .8rem;
+	color: #1a162d99;
+}
+
+#TableOfContents {
+	border-left: 1px solid #09bc8a3d;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+html, body {
+  scroll-padding-top: 100px;
+}
+
+/*---anchor headings-- */
+
+a > svg.anchor-symbol {
+  color: transparent;
+  margin-bottom: .5rem;
+  margin-left: .5rem;
+  fill: #1a162d99;
+}
+
+a > svg.anchor-symbol:hover {
+  fill: #06805E;
+  transition: fill 0.6s ease;
+}
+
+
+/* ************************************************** */
+/*  Taken from my itns-tutorial * /
+
+/*   background-image: url("../images/caution.png"); */
+
+/* using Bootstrap 4 has smaller font-size: 1rem,
+   Bootstrap 3 has 14px
+body {
+  font-size: 1.4rem !important;
+}
+*/
+
+
+:root {
+  --primary:        #027BFF;
+  --secondary:      #6C757D;
+  --success-bg:     #dff0d8;
+  --success-fg:     #468847;
+  --stop:           #DC3545;
+  --stop-bg:        #f2dede;
+  --stop-fg:        #b94a48;
+  --warning-bg:     #fcf8e3;
+  --warning-fg:     #d1b37c;
+  --info:           #25A2B8;
+  --info-bg:        #D9EDF7;
+  --info-fg:        #317EAC;
+}
+
+.successbox {
+  padding: 1em 1em 1em 4em;
+  margin-bottom: 10px;
+  border: 2px solid var(--success-fg);
+  border-radius: 10px;
+  background: var(--success-bg) 5px center/3em no-repeat;
+  background-image: url("../icons/checkmark.png");
+  background-repeat: no-repeat;
+}
+
+.infobox {
+  padding: 1em 1em 1em 4em;
+  margin-bottom: 10px;
+  border: 2px solid var(--info-fg);
+  border-radius: 10px;
+  background: var(--info-bg) 5px center/3em no-repeat;
+  background-repeat: no-repeat;
+/*  background-image: url("../../../assets/media/icons/info.png"); */
+   background-image: url("../media/info.png");
+}
+
+.warningbox {
+  padding: 1em 1em 1em 4em;
+  margin-bottom: 10px;
+  border: 2px solid var(--warning-fg);
+  border-radius: 10px;
+  background: var(--warning-bg) 5px center/3em no-repeat;
+  background-repeat: no-repeat;
+  background-image: url("../icons/warning.png");
+}
+
+.stopbox {
+  padding: 1em 1em 1em 4em;
+  margin-bottom: 10px;
+  border: 2px solid var(--stop-fg);
+  border-radius: 10px;
+  background: var(--stop-bg) 5px center/3em no-repeat;
+  background-repeat: no-repeat;
+  background-image: url("../icons/stop.png");
+}
+
+
+
+div.hanging-indent {
+text-indent: -28px;
+padding-left: 28px;
+}
+
+

@@ -5,12 +5,14 @@ if (file.exists("~/.Rprofile")) {
 }
 options(
   blogdown.serve_site.startup = FALSE,
-  blogdown.knit.on_save = FALSE,
+  blogdown.knit.on_save = TRUE,
   blogdown.new_bundle = TRUE,
   blogdown.author = "Peter Baumgartner",
-  blogdown.ext = ".Rmd", # '.Rmarkdown'
-  # blogdown.method = 'markdown',
-  blogdown.subdir = "post"
+  blogdown.ext = ".Rmd", # '.Rmd', '.Rmarkdown' or '.md'
+  # whenever changing method: delete files from previous knit and restart!
+  blogdown.method = 'html', # 'html' (default), 'markdown' or 'custom'
+  blogdown.subdir = "post",
+  blogdown.yaml.empty	= TRUE	# Preserve empty fields in YAML?
 )
 
 

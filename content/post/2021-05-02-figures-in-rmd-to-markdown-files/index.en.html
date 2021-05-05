@@ -1,0 +1,167 @@
+---
+draft: true
+title: Images in Rmd to markdown Files
+author: Peter Baumgartner
+date: '2021-05-02'
+categories:
+  - blogdown
+tags:
+  - Hugo
+  - knitr
+  - Pandoc
+  - R Markdown
+slug: images-in-rmd-to-markdown-files
+lastmod: '2021-05-02T08:43:11+02:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+
+summary: Testing different methods to include images form .Rmd to markdown files.
+---
+
+<script src="{{< blogdown/postref >}}index.en_files/header-attrs/header-attrs.js"></script>
+
+
+<div id="using-r-chunk-with-knitr" class="section level2">
+<h2>Using r chunk with <code>knitr</code></h2>
+<div class="figure" style="text-align: center"><span id="fig:img-with-knitr"></span>
+<img src="images/my-image.png" alt="Caption for this figure 1" width="100%" />
+<p class="caption">
+Figure 1: Caption for this figure 1
+</p>
+</div>
+<div id="code-in-r-chunk" class="section level3">
+<h3>Code in R Chunk</h3>
+<pre><code>```
+{r img-with-knitr, echo=FALSE, fig.align=&#39;center&#39;, out.width=&#39;100%&#39;, fig.cap=&#39;Caption for this figure 1&#39;}
+knitr::include_graphics(&quot;images/my-image.png&quot;)
+```</code></pre>
+</div>
+<div id="code-in-html" class="section level3">
+<h3>Code in HTML</h3>
+<pre><code>```
+&lt;div class=&quot;figure&quot; style=&quot;text-align: center&quot;&gt;
+    &lt;span id=&quot;fig:img-with-knitr&quot;&gt;&lt;/span&gt;
+    &lt;img src=&quot;images/my-image.png&quot; alt=&quot;Caption for this figure 1&quot; width=&quot;100%&quot;/&gt;
+    &lt;p class=&quot;caption&quot;&gt;Figure 1: Caption for this figure 1&lt;/p&gt;
+&lt;/div&gt;
+
+```</code></pre>
+</div>
+<div id="css" class="section level3">
+<h3>CSS</h3>
+<pre><code>.figure {
+        border: 1px;
+        border-style: groove;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px  rgba(0, 0, 0, 0.19);
+}
+
+.figure .caption {
+    text-align: center;
+    margin-top: -0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: smaller;
+}</code></pre>
+</div>
+<div id="summary" class="section level3">
+<h3>Summary</h3>
+<ul>
+<li><strong>Caption</strong>: yes</li>
+<li><strong>Format of caption</strong>: no</li>
+<li><strong>Caption automatically numbered</strong>: yes</li>
+<li><strong>Alt</strong>: yes</li>
+<li><strong>Title</strong>: no</li>
+<li><strong>Tooltip</strong>: no</li>
+<li><strong>Width/Height</strong>: yes</li>
+<li><strong>Link to</strong>: no</li>
+<li><strong>ID</strong>: yes (format: "fig:&lt;chunk name&gt;)</li>
+<li><strong>Classes</strong>: yes (with <code>out.extra</code>, example: <code>out.extra='class="border shadowed"'</code></li>
+<li><strong>CSS style</strong>: yes (with out.extra, example: <code>out.extra='style="background-color: #9ecff7; padding:10px; display: inline-block;"'</code> See blog post <a href="http://zevross.com/blog/2017/06/19/tips-and-tricks-for-working-with-images-and-figures-in-r-markdown-documents/">Tips and tricks for working with images and figures in R Markdown documents</a></li>
+<li><strong>Other</strong> (key=value): no</li>
+</ul>
+</div>
+</div>
+<div id="markdown-via-addins-insert-image" class="section level2">
+<h2>Markdown via Addins ‘Insert Image’</h2>
+<div class="figure">
+<img src="images/my-image.png" alt="" />
+<p class="caption"><strong>Figure 2:</strong> Caption for this figure 2</p>
+</div>
+<div id="code-in-markdown" class="section level3">
+<h3>Code in markdown</h3>
+<pre><code>![**Figure 2:** Caption for this figure 2](images/my-image.png)</code></pre>
+</div>
+<div id="code-in-html-1" class="section level3">
+<h3>Code in HTML</h3>
+<pre><code>&lt;div class=&quot;figure&quot;&gt;
+&lt;img src=&quot;images/my-image.png&quot; alt=&quot;&quot;&gt;
+&lt;p class=&quot;caption&quot;&gt;&lt;strong&gt;Figure 2:&lt;/strong&gt; Caption for this figure 1&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+</div>
+<div id="css-1" class="section level3">
+<h3>CSS</h3>
+<p>Because of classes figure and caption: Exactly the same as with Addins window.</p>
+</div>
+<div id="summary-1" class="section level3">
+<h3>Summary</h3>
+<ul>
+<li><strong>Caption</strong>: yes</li>
+<li><strong>Format of caption</strong>: yes</li>
+<li><strong>Caption automatically numbered</strong>: no</li>
+<li><strong>Alt</strong>: no</li>
+<li><strong>Title</strong>: no</li>
+<li><strong>Tooltip</strong>: no</li>
+<li><strong>Width/Height</strong>: yes</li>
+<li><strong>Link to</strong>: no</li>
+<li><strong>ID</strong>: no</li>
+<li><strong>Classes</strong>: no</li>
+<li><strong>CSS style</strong>: no</li>
+<li><strong>Other</strong> (key=value): no</li>
+</ul>
+</div>
+</div>
+<div id="visual-r-markdown-via-menu-insert" class="section level2">
+<h2>Visual R Markdown via Menu ‘Insert …’</h2>
+<div class="figure">
+<img src="images/my-image.png" title="title text and tooltip" id="figure3" alt="" />
+<p class="caption">Figure 3: Caption for this figure 3</p>
+</div>
+<div id="code-in-markdown-1" class="section level3">
+<h3>Code in markdown</h3>
+<pre><code>![Figure 3: Caption for this figure 3](images/my-image.png &quot;title text and tooltip&quot;){#figure3}</code></pre>
+</div>
+<div id="code-in-html-2" class="section level3">
+<h3>Code in HTML</h3>
+<pre><code>&lt;div class=&quot;figure&quot;&gt;
+&lt;img src=&quot;images/my-image.png&quot; title=&quot;title text and tooltip&quot; id=&quot;figure2&quot; alt=&quot;&quot;&gt;
+&lt;p class=&quot;caption&quot;&gt;Figure 3: Caption for this figure 3&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+</div>
+<div id="css-2" class="section level3">
+<h3>CSS</h3>
+<p>Because of classes figure and caption: Exactly the same as with Addins window.</p>
+</div>
+<div id="summary-2" class="section level3">
+<h3>Summary</h3>
+<ul>
+<li><strong>Caption</strong>: yes</li>
+<li><strong>Format of caption</strong>: no</li>
+<li><strong>Caption automatically numbered</strong>: no</li>
+<li><strong>Alt</strong>: no</li>
+<li><strong>Title</strong>: yes</li>
+<li><strong>Tooltip</strong>: yes</li>
+<li><strong>Width/Height</strong>: yes</li>
+<li><strong>Link to</strong>: yes</li>
+<li><strong>ID</strong>: yes</li>
+<li><strong>Classes</strong>: yes</li>
+<li><strong>CSS style</strong>: yes</li>
+<li><strong>Other</strong> (key=value): yes</li>
+</ul>
+</div>
+</div>
+<div id="hugo-figure-shortcut" class="section level2">
+<h2>Hugo figure shortcut</h2>
+<p>Not working for me: in contrast to <a href="https://ropensci.org/blog/2020/04/23/rmd-learnings/">other blog entries</a>, where a certain html comment preserves the syntax for Goldmark (or is it Blackfriday, and this is the reason why it is not working?).</p>
+</div>

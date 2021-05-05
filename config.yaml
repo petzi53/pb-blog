@@ -4,7 +4,7 @@ theme: "starter-academic"
 # Hugo Documentation: https://gohugo.io/getting-started/configuration/#all-configuration-settings
 # This file is formatted using YAML syntax - learn more at https://learnxinyminutes.com/docs/yaml/
 
-title: Academic # Website name
+title: EduTech # Website name
 baseurl: '' # Website URL
 copyright: '' # Footer text, e.g. '© {year} Me'
 
@@ -52,12 +52,13 @@ markup:
   defaultMarkdownHandler: goldmark
   goldmark:
     renderer:
-      unsafe: true
+      unsafe: true # Enable user to embed HTML snippets in Markdown content.
   highlight:
-    codeFences: false
+    style: pygments
+    codeFences: false # Disable Hugo's code highlighter as it conflicts with Academic's highlighter.
   tableOfContents:
     startLevel: 2
-    endLevel: 3
+    endLevel: 4
 imaging:
   resampleFilter: lanczos
   quality: 75
