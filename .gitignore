@@ -7,5 +7,6 @@ Thumbs.db
 /public/
 /resources/
 index.html
-index_files
-
+index.en.html
+index_files/
+index.en_files/
