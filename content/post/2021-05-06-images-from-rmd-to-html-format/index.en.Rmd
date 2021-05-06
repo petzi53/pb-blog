@@ -129,13 +129,13 @@ The alternate text should describe what you can see on the image in case the ima
 
 ### Example
 
-![**Figure 2:** Caption for this figure 2](images/my-image.png)
+![**Figure 2:** Caption for this figure 2](images/my-image.png){width="100%"}
 
 ### Code in markdown
 
 RStudio Addins window produces the following markdown code:
 
-    ![**Figure 2:** Caption for this figure 2](images/my-image.png)
+    ![**Figure 2:** Caption for this figure 2](images/my-image.png){width=100%}
 
 I think starting with the RStudio version 1.4 (January 2021) the RStudio Addin window is superseded by the the [Visual R Markdown](https://rstudio.github.io/visual-markdown-editing/#/) window (see [next section](#visual-r-markdown-via-menu-insert)). If you are turning on the visual editor you can always enhance the rudimentary markdown of the addin window with all the features of Visual R Markdown.
 
@@ -199,6 +199,10 @@ After you have turned on Visual R Markdown you can load the image window via the
 Even in this enhanced window is the wrong mixture of 'Caption' and 'Alt' attributes offered. But there is a work around with the 'Other'-field as I have shown in the screenshot.
 
 {{% callout note %}} Fill in the field "Caption/Alt" **and** add the `alt` attribute in the field "Others". After the conversion to HTML the former constitutes the caption and the later the alternative text. {{% /callout %}}
+
+If you click on the inserted image and call the window again, then a slightly different window appears where fields for width and height are added and can be changed. This addition appears under the image as well by just clicking on the image.
+
+![Width and height field added after the image was included into the .Rmd page](images/width-height-fields-after-image-inclusion-min.png){#width-height-added alt="Width and height field added after the image was included into the .Rmd page. Left: changed window, right: after click into the inserted window."}
 
 ### Code in markdown
 

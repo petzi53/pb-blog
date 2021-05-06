@@ -166,14 +166,14 @@ p.caption {
 <div id="example-1" class="section level3">
 <h3>Example</h3>
 <div class="figure">
-<img src="images/my-image.png" alt="" />
+<img src="images/my-image.png" style="width:100.0%" alt="" />
 <p class="caption"><strong>Figure 2:</strong> Caption for this figure 2</p>
 </div>
 </div>
 <div id="code-in-markdown" class="section level3">
 <h3>Code in markdown</h3>
 <p>RStudio Addins window produces the following markdown code:</p>
-<pre><code>![**Figure 2:** Caption for this figure 2](images/my-image.png)</code></pre>
+<pre><code>![**Figure 2:** Caption for this figure 2](images/my-image.png){width=100%}</code></pre>
 <p>I think starting with the RStudio version 1.4 (January 2021) the RStudio Addin window is superseded by the the <a href="https://rstudio.github.io/visual-markdown-editing/#/">Visual R Markdown</a> window (see <a href="#visual-r-markdown-via-menu-insert">next section</a>). If you are turning on the visual editor you can always enhance the rudimentary markdown of the addin window with all the features of Visual R Markdown.</p>
 <p>For this improvement you need to</p>
 <ul>
@@ -235,6 +235,11 @@ p.caption {
 </div>
 <p>Even in this enhanced window is the wrong mixture of ‘Caption’ and ‘Alt’ attributes offered. But there is a work around with the ‘Other’-field as I have shown in the screenshot.</p>
 <p>{{% callout note %}} Fill in the field “Caption/Alt” <strong>and</strong> add the <code>alt</code> attribute in the field “Others”. After the conversion to HTML the former constitutes the caption and the later the alternative text. {{% /callout %}}</p>
+<p>If you click on the inserted image and call the window again, then a slightly different window appears where fields for width and height are added and can be changed. This addition appears under the image as well by just clicking on the image.</p>
+<div class="figure">
+<img src="images/width-height-fields-after-image-inclusion-min.png" id="width-height-added" alt="Width and height field added after the image was included into the .Rmd page. Left: changed window, right: after click into the inserted window." alt="" />
+<p class="caption">Width and height field added after the image was included into the .Rmd page</p>
+</div>
 </div>
 <div id="code-in-markdown-1" class="section level3">
 <h3>Code in markdown</h3>
