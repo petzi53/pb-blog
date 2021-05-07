@@ -63,6 +63,7 @@ output:
 <li><a href="#example-3">Example</a></li>
 <li><a href="#code-in-html-chunk">Code in HTML chunk</a></li>
 <li><a href="#css-3">CSS</a></li>
+<li><a href="#summary-3">Summary</a></li>
 </ul></li>
 <li><a href="#results-and-conclusion">Results and Conclusion</a></li>
 </ul>
@@ -169,6 +170,7 @@ p.caption {
 <img src="images/my-image.png" style="width:100.0%" alt="" />
 <p class="caption"><strong>Figure 2:</strong> Caption for this figure 2</p>
 </div>
+<p>{{% callout warning %}} You can’t use the Addins ‘Insert Image’ in Visual R Markdown mode because it protects the conversion by adding a backslash in front of the squared brackets: <code>!\[Alt text\](images/my-image.png)</code>.{{% /callout %}}</p>
 </div>
 <div id="code-in-markdown" class="section level3">
 <h3>Code in markdown</h3>
@@ -323,6 +325,23 @@ p.caption {
 ```</code></pre>
 <p>The produced HTML is pretty complex, but here we are just interested in the two relevant tags for CSS styling: <code>&lt;figure&gt;</code> and <code>&lt;figcaption&gt;</code>. These two HTML tag are different to the code produced by other methods of inserting images. So maybe it would be a good idea to style both variants the same way.</p>
 </div>
+<div id="summary-3" class="section level3">
+<h3>Summary</h3>
+<ul>
+<li><strong>Caption</strong>: yes</li>
+<li><strong>Format of caption</strong>: no</li>
+<li><strong>Caption automatically numbered</strong>: yes (Academic theme)</li>
+<li><strong>Alt</strong>: yes</li>
+<li><strong>Title</strong>: no</li>
+<li><strong>Tooltip</strong>: no (zoomable)</li>
+<li><strong>Width/Height</strong>: yes</li>
+<li><strong>Link to</strong>: yes</li>
+<li><strong>ID</strong>: yes (Academic theme)</li>
+<li><strong>Classes</strong>: yes</li>
+<li><strong>CSS style</strong>: yes</li>
+<li><strong>Other</strong> (key=value): no</li>
+</ul>
+</div>
 </div>
 <div id="results-and-conclusion" class="section level2">
 <h2>Results and Conclusion</h2>
@@ -384,7 +403,7 @@ p.caption {
 <td align="center">❌</td>
 <td align="center">❌</td>
 <td align="center">✅</td>
-<td align="center">✅</td>
+<td align="center">❌</td>
 <td></td>
 </tr>
 <tr class="even">
@@ -392,7 +411,7 @@ p.caption {
 <td align="center">❌</td>
 <td align="center">❌</td>
 <td align="center">✅</td>
-<td align="center">✅</td>
+<td align="center">❌</td>
 <td></td>
 </tr>
 <tr class="odd">

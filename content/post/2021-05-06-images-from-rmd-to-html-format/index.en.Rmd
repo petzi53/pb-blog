@@ -131,6 +131,8 @@ The alternate text should describe what you can see on the image in case the ima
 
 ![**Figure 2:** Caption for this figure 2](images/my-image.png){width="100%"}
 
+{{% callout warning %}} You can't use the Addins 'Insert Image' in Visual R Markdown mode because it protects the conversion by adding a backslash in front of the squared brackets: `!\[Alt text\](images/my-image.png)`.{{% /callout %}}
+
 ### Code in markdown
 
 RStudio Addins window produces the following markdown code:
@@ -286,6 +288,21 @@ The `id` and `numbered` attributes are not provided by but they are a [feature f
 
 The produced HTML is pretty complex, but here we are just interested in the two relevant tags for CSS styling: `<figure>` and `<figcaption>`. These two HTML tag are different to the code produced by other methods of inserting images. So maybe it would be a good idea to style both variants the same way.
 
+### Summary
+
+-   **Caption**: yes
+-   **Format of caption**: no
+-   **Caption automatically numbered**: yes (Academic theme)
+-   **Alt**: yes
+-   **Title**: no
+-   **Tooltip**: no (zoomable)
+-   **Width/Height**: yes
+-   **Link to**: yes
+-   **ID**: yes (Academic theme)
+-   **Classes**: yes
+-   **CSS style**: yes
+-   **Other** (key=value): no
+
 ## Results and Conclusion
 
 +--------------+-------+-------+--------+-------+-------------------------------------------------+
@@ -299,9 +316,9 @@ The produced HTML is pretty complex, but here we are just interested in the two 
 +--------------+-------+-------+--------+-------+-------------------------------------------------+
 | Alt          | ✅     | ❌     | ✅ ^4^  | ✅     | ^4^ via 'Other'-field                           |
 +--------------+-------+-------+--------+-------+-------------------------------------------------+
-| Title        | ❌     | ❌     | ✅      | ✅     |                                                 |
+| Title        | ❌     | ❌     | ✅      | ❌     |                                                 |
 +--------------+-------+-------+--------+-------+-------------------------------------------------+
-| Tooltip      | ❌     | ❌     | ✅      | ✅     |                                                 |
+| Tooltip      | ❌     | ❌     | ✅      | ❌     |                                                 |
 +--------------+-------+-------+--------+-------+-------------------------------------------------+
 | Width/Height | ✅     | ✅     | ✅      | ✅     |                                                 |
 +--------------+-------+-------+--------+-------+-------------------------------------------------+

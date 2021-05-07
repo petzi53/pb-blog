@@ -24,6 +24,8 @@ summary: The post investigates different methods to include images in `.md` file
 
 Using the RStudio Addin window without the width or height parameter it just generate markdown code. Is the width or height parameter included then HTML is generated but without `div.figure` and `p.caption` class. There is no caption visible and the CSS styling has to be done with `<img>` tag.
 
+### Example
+
 <img src="images/my-image.png" alt="Alt text" width="100%"/>
 
 {{% callout warning %}} You can't use the Addins 'Insert Image' in Visual R Markdown mode because it protects the conversion by adding a backslash in front of the squared brackets: `!\[Alt text\](images/my-image.png)`.{{% /callout %}}
@@ -98,27 +100,60 @@ The same as with the RStudio Addin window.
 
 ### Summary
 
--   **Caption**: yes
+-   **Caption**: no
 -   **Format of caption**: no
 -   **Caption automatically numbered**: no
 -   **Alt**: no
 -   **Title**: yes
 -   **Tooltip**: yes
--   **Width/Height**: yes
+-   **Width/Height**: no
 -   **Link to**: yes
--   **ID**: yes
--   **Classes**: yes
--   **CSS style**: yes
--   **Other** (key=value): yes
+-   **ID**: no
+-   **Classes**: no
+-   **CSS style**: no
+-   **Other** (key=value): no
 
 ## Hugo figure shortcut
 
 In contrast to the .Rmd file we do not need to protect the shortcode. We can insert it either via the Visual R Markdown menu `Insert -> Shortcode` or write the code directly into markdown.
 
+### Example
+
 {{< figure src="images/my-image.png" class="center" alt="my-alt text" caption="Figure 4: my title-text" >}}
 
-Everything I said about the features of the figure shortcode in the post Images: [From R Markdown to HTML format](../images-from-rmd-to-html-format/#example-3) applies for `.md` files as well.
+Everything I said about the features of the figure shortcode in the post [Images: From R Markdown to HTML format](../images-from-rmd-to-html-format/#example-3) applies for `.md` files as well.
 
-## Conclusion
+### Summary
+
+-   **Caption**: yes
+-   **Format of caption**: no
+-   **Caption automatically numbered**: yes (Academic theme)
+-   **Alt**: yes
+-   **Title**: no
+-   **Tooltip**: no (zoomable)
+-   **Width/Height**: yes
+-   **Link to**: yes
+-   **ID**: yes (Academic theme)
+-   **Classes**: yes
+-   **CSS style**: yes
+-   **Other** (key=value): no
+
+## Results and Conclusion
+
+| Attribute    | Addin | Visual | Hugo | Remark                                          |
+|--------------|:-----:|:------:|:----:|-------------------------------------------------|
+| Caption      |   ❌   |   ❌    |  ✅   |                                                 |
+| C. format    |   ❌   |   ❌    | ❌ 1  | 1\) standard = bold                             |
+| C.numbered   |   ❌   |   ❌    | ✅ 2  | 2\) via 'Academic' theme                        |
+| Alt          |   ❌   |   ❌    |  ✅   |                                                 |
+| Title        |   ❌   |   ✅    |  ❌   |                                                 |
+| Tooltip      |   ❌   |   ✅    |  ❌   |                                                 |
+| Width/Height |   ✅   |   ❌    |  ✅   |                                                 |
+| Link to      |   ❌   |   ✅    |  ✅   |                                                 |
+| ID           |   ❌   |   ❌    | ✅ 3  | 3\) `figure-<caption text>` or 'Academic' theme |
+| CSS          |   ❌   |   ❌    |  ✅   |                                                 |
+| Other        |   ❌   |   ❌    | ✅ 4  | 4\) `target`, `rel`, `attr`, `attrlink`         |
+
+**Table**: Features of different method of inserting images in `.md` files converting with Hugo/Goldmark to HTML
 
 Only Hugo shortcode (with ID and numbered extension by the Academic theme) is the only real choice for figures equipped with all necessary attributes and nice styled.
