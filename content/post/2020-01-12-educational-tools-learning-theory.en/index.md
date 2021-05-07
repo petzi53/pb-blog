@@ -8,7 +8,7 @@ categories:
 tags:
 - educational-design
 - taxonomy
-description: 'This article suggests a procedure to categorize the enormous amount
+summary: 'This article suggests a procedure to categorize the enormous amount
   of educational tools in the market. My approach uses a framework of three well-grounded
   learning theories: Instruction, Cognition, and Construction based on presentation
   modes (one-way teaching), dialog settings (two-way education), and collaborative
@@ -17,7 +17,7 @@ description: 'This article suggests a procedure to categorize the enormous amoun
   by [Jane Hart](https://www.toptools4learning.com/jane-hart/) as a result of the 13th Annual Learning Tools Survey (published 18
   September 2019).'
 
-disable_comments: yes
+disable_comments: no
 draft: no
 slug: educational-tools-and-learning-theory
 ---
