@@ -4,7 +4,7 @@ header:
   image: ""
 title: Courses
 type: page
-active: false
+active: true
 ---
 
 I teach the following courses:

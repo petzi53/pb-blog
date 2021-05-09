@@ -1,22 +1,29 @@
 ---
-# An instance of the Pages widget.
-# Documentation: https://wowchemy.com/docs/page-builder/
-widget: pages
+header:
+  caption: ""
+  image: ""
+# title: Blog
+type: page
+active: true
 
-# This file represents a page section.
+# # An instance of the Pages widget.
+# # Documentation: https://wowchemy.com/docs/page-builder/
+widget: pages
+# 
+# # This file represents a page section.
 headless: true
 
 # Order that this section appears on the page.
 weight: 60
 
-# title: Recent Posts
-subtitle: "Blog"
+# # title: Recent Posts
+# subtitle: "Blog"
 
 content:
   # Page type to display. E.g. post, talk, publication...
   page_type: post
   # Choose how many pages you would like to display (0 = all pages)
-  count: 5
+  count: 25
   # Filter on criteria
   filters:
     author: ""

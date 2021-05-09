@@ -15,7 +15,7 @@ font_size: L
 site_type: Person
 local_business_type: ''
 org_name: ''
-description: ''
+description: "Peter's Blog on EduTech and RStats"
 twitter: 'http://twitter.com/pbaumgartner'
 
 # Contact (edit or remove options as required)
@@ -79,9 +79,13 @@ highlight_languages:
   - r
   - python
   - latex
+  - markdown
+  - javascript
+  - css
+highlight_style: "vs"
 math: false
 diagram: false
-privacy_pack: false
+privacy_pack: true
 edit_page:
   repo_url: 'https://github.com/petzi53/pb-blog'
   content_dir: ''

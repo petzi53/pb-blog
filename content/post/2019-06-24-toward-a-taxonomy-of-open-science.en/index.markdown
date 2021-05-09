@@ -22,9 +22,9 @@ This post starts a series of ten contributions about a better understanding of t
 
 ## The many faces of Open Science
 
-With a superficial approach to the topic, it almost looks as if Open Science is identical to Open Access. Indeed, Open Access represents within Open Science the strongest and far-reaching movement with the highest financial and political consequences. However, Open Access is only one (important) part of the Open Science movement, which consists of a wide variety of different viewpoints, each with distinct socio-political conditions and effects. The planned series of post on Open Science will show how extensive and diverse this area already is. A first impression about the complexity of the subject communicates the following graphic (Pontika et al. 2015).
+With a superficial approach to the topic, it almost looks as if Open Science is identical to Open Access. Indeed, Open Access represents within Open Science the strongest and far-reaching movement with the highest financial and political consequences. However, Open Access is only one (important) part of the Open Science movement, which consists of a wide variety of different viewpoints, each with distinct socio-political conditions and effects. The planned series of post on Open Science will show how extensive and diverse this area already is. A first impression about the complexity of the subject communicates the following graphic \[@pontika\_fostering\_2015\].
 
-Although I consider this compilation of the numerous fields of Open Science to be valuable, I see – sensitized by my own work on taxonomies (Baumgartner and Bergner 2016; Baumgartner 2014; Baumgartner, Zauchner, and Bauer 2009) – in [Figure 1](#fig1) some inconsistency and shortcomings:
+Although I consider this compilation of the numerous fields of Open Science to be valuable, I see – sensitized by my own work on taxonomies \[@baumgartner\_feedback-arten\_2016; @baumgartner\_taxonomie\_2014-5; @baumgartner\_potential\_2009\] – in [Figure 1](#fig1) some inconsistency and shortcomings:
 
 -   I miss some critical areas such as Open Content, Open Educational Resources, and Open Licenses.
 -   There are theoretical discrepancies and overlaps, e.g., Open Science Workflows is under Open Reproducible Research. In my opinion we need different workflows not only in the area of reproducible research but in *all* Open Science activities. Another example: Irreproducible Research, is classified as a sub-item of Open Reproducible Research. However, how is it possible that the contraction of a thing is a sub-category of the very same thing? Irreproducible Research is not a part of Open Reproducible Research; it is plain and simple a misnomer.
@@ -76,24 +76,6 @@ Every time I will publish one of these articles, I will repeat my graph with a s
 ## References
 
 <div id="refs" class="references csl-bib-body hanging-indent">
-
-<div id="ref-baumgartner_taxonomie_2014-5" class="csl-entry">
-
-Baumgartner, Peter. 2014. *<span class="nocase">Taxonomie von Unterrichtsmethoden: ein Plädoyer für didaktische Vielfalt</span>*. 2. aktualisierte und korrigierte Auflage. Münster: Waxmann.
-
-</div>
-
-<div id="ref-baumgartner_feedback-arten_2016" class="csl-entry">
-
-Baumgartner, Peter, and Ingrid Bergner. 2016. “<span class="nocase">Feedback-Arten für Online-Lernen: Taxonomie und Realisierung von Feedback-Mustern für Multiple-Choice Tests in Moodle</span>.” In *<span class="nocase">Digitale Medien: Zusammenarbeit in der Bildung</span>*, edited by Josef Wachtler, 201–10. Münster: Waxmann. <http://2016.gmw-online.de/wp-content/uploads/201.pdf>.
-
-</div>
-
-<div id="ref-baumgartner_potential_2009" class="csl-entry">
-
-Baumgartner, Peter, Sabine Zauchner, and Reinhard Bauer, eds. 2009. *Potential of e-Portfolios in Higher Education*. Innsbruck; Piscataway, N.J.: StudienVerlag ; Distributed by Transaction Publishers.
-
-</div>
 
 <div id="ref-foster_consortium_resources_2015" class="csl-entry">
 
