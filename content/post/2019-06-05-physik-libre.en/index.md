@@ -6,7 +6,7 @@ categories:
   - case-study
 tags:
   - bookdown
-disable_comments: no
+commentable: true
 draft: no
 summary: 'The article is an interview with Michael Rundel. Michael is a teacher
   at a grammar school in Vienna/Austria and teaches physics, computer science, and

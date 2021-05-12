@@ -16,7 +16,7 @@ summary: 'By discussing different definitions of ‘Open Science’ quoted in th
   Science with the concepts of eScience, Cyberscience or Science 2.0, Libre Science
   and Open respective Libre Knowledge.'
 slug: what-is-open-science-about
-disable_comments: no
+commentable: true
 draft: no
 ---
 

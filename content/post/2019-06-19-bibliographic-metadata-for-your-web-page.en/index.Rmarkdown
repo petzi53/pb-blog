@@ -19,7 +19,7 @@ summary: 'With _Web 2.0_, we see a radical change in scholarly communication.
   as a web publication.'
 slug: bibliographic-metadata-for-your-web-page
 bibliography: ["../../../static/media/references.bib"]
-disable_comments: no
+commentable: true
 draft: no
 ---
 
@@ -45,7 +45,7 @@ With *Web 2.0*, we see a radical change in scholarly communication. On the one h
 
 Especially for young researchers (so-called Early Career Researchers, or ECRs[^1] is this situation alarming and even existence-threatening. The find themselves in a double-bind: Should they more invest in traditional ways of career planning, or is it more promising to expand and foster their internet presence? I do not have a clear solution for myself. I think a transition period, the most secure strategy is to follow both paths.
 
-> ECRs have both the most to gain and the most to lose from being at the forefront of changes to scholarly communications [@eve_open_2014; @st._louis_open_2015].
+> ECRs have both the most to gain and the most to lose from being at the forefront of changes to scholarly communications \[\@eve_open_2014; \@st.\_louis_open_2015\].
 
 ## COinS and Zotero
 
@@ -95,9 +95,7 @@ My suggestion is
 
 There are [several possibilities to generate COinS](https://en.wikipedia.org/wiki/COinS#Client_tools), but I will focus on Zotero. I am not going into further details here, but [I have prepared a tutorial](%60r%20blogdown::shortcode(%22ref%22,%20%222019-06-19-how-to-produce-coins.md%22)%60) with images from all the necessary steps to produce, embed, and download [COinS](https://www.questia.com/magazine/1G1-161981672/coins-what-it-stands-for-context-objects-in-spans).
 
-::: {.notices .tip}
-Visit my tutorial on [How to produce bibliographic metadata for your web page?](%60r%20blogdown::shortcode(%22ref%22,%20%222019-06-19-how-to-produce-coins.md%22)%60)
-:::
+::: {.notices .tip} Visit my tutorial on [How to produce bibliographic metadata for your web page?](%60r%20blogdown::shortcode(%22ref%22,%20%222019-06-19-how-to-produce-coins.md%22)%60) :::
 
 ## References
 

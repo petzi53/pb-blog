@@ -16,7 +16,7 @@ summary: 'Quoting websites is a hassle for several reasons: Firstly, web pages
   valid anymore. Thirdly, they change their content so that the cited reference is
   not correct anymore. This article presents some strategies and tools to bypass the
   challenges mentioned above.'
-disable_comments: no
+commentable: true
 draft: no
 slug: archiving-quoted-web-resources
 ---

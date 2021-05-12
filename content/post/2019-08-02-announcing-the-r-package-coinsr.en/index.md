@@ -12,7 +12,7 @@ tags:
   - r
   - RStudio
 summary: 'This blog entry announces the R program `coinsR` to produce bibliographic metadata automatically for websites within the Hugo framework. The dominant use case at the moment is with the `blogdown` package.'
-disable_comments: no
+commentable: true
 draft: no
 slug: announcing-the-r-package-coinsr
 ---

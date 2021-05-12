@@ -14,7 +14,7 @@ summary: "Last week – just before Christmas – I received two badges. One fro
   the other one from  Wakelet. I thought about a little
   thank-you gift. What I came up with --- killing two birds with one stone --- was
   a Wakelet collection of DORA's newsletter."
-disable_comments: no
+commentable: true
 draft: no
 ---
 

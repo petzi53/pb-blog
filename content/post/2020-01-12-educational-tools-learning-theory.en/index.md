@@ -17,7 +17,7 @@ summary: 'This article suggests a procedure to categorize the enormous amount
   by [Jane Hart](https://www.toptools4learning.com/jane-hart/) as a result of the 13th Annual Learning Tools Survey (published 18
   September 2019).'
 
-disable_comments: no
+commentable: true
 draft: no
 slug: educational-tools-and-learning-theory
 ---

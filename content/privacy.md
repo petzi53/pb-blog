@@ -3,7 +3,7 @@ title: "Privacy Policy"
 
 date: 2021-05-11
 draft: false
-disable_comments: true
+commentable: false
 lastmod:
 no_coins: yes
 ---
@@ -14,10 +14,10 @@ There are several places on this website that requires you to identify yourself:
 
 I am using [Disqus](https://disqus.com/) as a commenting system. To control your data with Disqus, you can:
 
-- [read the general policy](https://blog.disqus.com/update-on-privacy-and-gdpr-compliance) by Disqus concerning the GDPR Compliance
-- [read the privacy FAQ](https://help.disqus.com/terms-and-policies/privacy-faq)
-- [opt out from information gathering](https://disqus.com/data-sharing-settings/) by Disqus
-- [delete or access your user data](https://help.disqus.com/commenting/gdpr-delete-or-access-user-data)
+-   [read the general policy](https://blog.disqus.com/update-on-privacy-and-gdpr-compliance) by Disqus concerning the GDPR Compliance
+-   [read the privacy FAQ](https://help.disqus.com/terms-and-policies/privacy-faq)
+-   [opt out from information gathering](https://disqus.com/data-sharing-settings/) by Disqus
+-   [delete or access your user data](https://help.disqus.com/commenting/gdpr-delete-or-access-user-data)
 
 ## Contact
 

@@ -19,7 +19,7 @@ summary: 'With _Web 2.0_, we see a radical change in scholarly communication.
   as a web publication.'
 slug: bibliographic-metadata-for-your-web-page
 bibliography: ["../../../static/media/references.bib"]
-disable_comments: no
+commentable: true
 draft: no
 ---
 

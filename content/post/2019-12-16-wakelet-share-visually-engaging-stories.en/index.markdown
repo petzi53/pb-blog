@@ -10,7 +10,7 @@ tags:
   - wakelet
 lastmod: null
 summary: "Storify is dead - long live Wakelet! This article features Wakelet, a similar program as the now-defunct Storify. But Wakelet is different in many aspects, and I bet it will stay for many years with us. Firstly it comes with many features Storify has lacked. It is already a full-fledged tool for content curation, presentation, and sharing. Secondly, it has a steadily growing user base where already some of the world's most prominent organizations are using Wakelet. And the best of it: There is no Premium price model: Wakelet is free in all its functionality."
-disable_comments: no
+commentable: true
 draft: no
 editor_options: 
   markdown: 

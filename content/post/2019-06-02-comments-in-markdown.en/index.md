@@ -9,7 +9,7 @@ tags:
 slug: comments-in-markdown
 lastmod: 2019-06-05
 summary: 'How to write comments in markdown?'
-disable_comments: no
+commentable: true
 draft: no
 ---
 
@@ -38,8 +38,6 @@ Searching in `Stack Overflow` I came finally up with the following [solution](ht
 
 [comment]: # (This text is a comment! Multiline comments are allowed as far as long there is no line break. This text is a comment! Multiline comments are allowed as long as there is no line break. This text is a comment!  Multiline comments are allowed as long as there is no line break. )
 ```
-
-[comment]: # (This text is a real comment! It does not appear at the webpage nor the source code of the page..)
 
 You can't see the result of this last code example not even in the source code. The comment is hidden by definition :wink: But you can inspect the original text file on my `GitHub` repository. Just click on the `Edit page` link in the top right corner of this page.
 

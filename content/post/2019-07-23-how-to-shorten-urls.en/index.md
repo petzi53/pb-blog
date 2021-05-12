@@ -12,7 +12,7 @@ summary: Citing and visiting web addresses with long URLs is sometimes complicat
   Long URLs are particularly a hardness when there are no clickable links but only
   long strings printed on paper.  This article suggests URL shortener to avoid the
   hurdle mentioned above.
-disable_comments: no
+commentable: true
 draft: no
 slug: advantages-of-url-shortener
 ---

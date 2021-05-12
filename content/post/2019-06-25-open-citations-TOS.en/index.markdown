@@ -13,7 +13,7 @@ summary: 'This article is the second post of a series of ten contributions about
 
 bibliography: ["../../../static/media/references.bib"]
 
-disable_comments: no
+commentable: true
 draft: no
 ---
 
@@ -52,12 +52,19 @@ The following two quotes explain the significance of Open Citations:
 
 Even if an article is published as Open Access, its citations are not automatically Open Citations. To qualify as Open Citations, the publisher must fulfill some conditions:
 
-{{% panel theme=\"primary\" header=\"Three obligatory requirements for Open Citations\" %}}
+{{% panel theme="primary" header="Three obligatory requirements for Open Citations" %}}
 <ul>
-  <li>Citations must be structured in a way that they can be accessed programmatically.</li>
-  <li>Citations must be accessed separable from their sources, such as journals articles or books.</li>
-  <li>Citations must not only be free accessible but also reusable.</li>
+<li>
+Citations must be structured in a way that they can be accessed programmatically.
+</li>
+<li>
+Citations must be accessed separable from their sources, such as journals articles or books.
+</li>
+<li>
+Citations must not only be free accessible but also reusable.
+</li>
 </ul>
+
 {{% /panel %}}
 
 The origins of this movement can be traced back to [OpenCitaton](http://opencitations.net/), a project funded by [JISC](https://www.jisc.ac.uk/), a UK based organization, which provides digital solutions for the education and research. In 2016 the [Initiative for Open Citation](https://i4oc.org/) was launched, which today is the driving force behind the movement. It aims for free availability and usage of all metadata from publications with a digital object identifier (DOI) registered by [Crossref](https:%20//www.crossref.%20org%20/). Freely available citation data are accessible through the [Crossref program interface](https://github.com/CrossRef/rest-api-doc) or the [Open Citation Corpus](http://opencitations.net/). Open Citations can be used to find publications, but also for the analysis of the citation corpus as well (e.g., “how do different fields of knowledge fit together?”).
@@ -112,12 +119,12 @@ WoS has a tremendous impact on the behavior of researchers and their career deve
 | \# of records    | &gt; 73 million | &gt; 155 million |
 | Cited references | 1.4 billion     | 1.6 billion      |
 
-To put these figures into perspectives: They cover “only” between 35% (Natural Sciences) to 12% (Arts and humanities) of all journals (&gt; 62,500) as listed in [UlrichsWeb](https://ulrichsweb.serialssolutions.com) (Ulrich’s Global Serials Directory) (Mongeon and Paul-Hus 2016),
+To put these figures into perspectives: They cover “only” between 35% (Natural Sciences) to 12% (Arts and humanities) of all journals (&gt; 62,500) as listed in [UlrichsWeb](https://ulrichsweb.serialssolutions.com) (Ulrich’s Global Serials Directory) \[@mongeon\_journal\_2016\],
 
 Clarivate also possesses other vital tools and services for scholarly research:
 
 -   [**Endnote**](https://endnote.com/), a popular reference management software, formerly the property of Thomson Reuters.
--   [**Publons**](https://publons.com/about/home/)**:** is a service for academics to honor respectively showcase their scientific work which does not lead to a “standard” publication in one of the JIF journals. The name of the enterprise is an homage to the moniker `publon`, signifying the smallest publishable unit. This concept is a cynical reference to the phenomenon that for the academic career the number of publications is often more important than their individual quality, resulting in “salami slicing” of papers.  
+-   [**Publons**](https://publons.com/about/home/)**:** is a service for academics to honor respectively showcase their scientific work which does not lead to a “standard” publication in one of the JIF journals. The name of the enterprise is an homage to the moniker `publon`, signifying the smallest publishable unit. This concept is a cynical reference to the phenomenon that for the academic career the number of publications is often more important than their individual quality, resulting in “salami slicing” of papers.
 -   [**Kopernio**](https://kopernio.com/) is a technology startup, which developed a web-browser extension that simplifies the process of finding and legally downloading scholarly publications.
 
 Clarivate Analytics acquired Publons in 2017 and Kopernio in April 2018. These purchases in recent years demonstrate that Clarivate Analytics knows how to secure its leading market position: Both services are (currently) free and are doubtless useful for the individual researcher. Besides generating revenues from publishers, Clarivate binds academics to their main product as both free services are closely related and linked to WoS.
@@ -146,7 +153,7 @@ Elsevier has even more market power than Clarivate Analytics. It owns
 
 In contrast to WoS and Google (with [Google Scholar](https://scholar.google.com) another big player in the citation reference business): Elsevier does not only sell the usage of their database but is also the owner of a vast list of journals themselves. From the perspective of this double ownership, Elsevier’s business model is a closed circle: It includes the paid use of their database so that academics can find and cite scientific literature. The result of these citations is an increase of reputation of Elsevier’s journals through a higher Journal Impact Factor.
 
-Elsevier is infamous for his incredibly high-profit margin, which is about 35-40%. In contrast, financial institutes and banks work with 10-15%, and the much-criticized Walmart has only about 3% profit. These figures come from the excellent and free accessible documentary “Paywall: The Business of Scholarship” (Schmitt 2018). In other posts, I will dwell more about the business model and the nasty role of Elsevier in the Open Science movement.
+Elsevier is infamous for his incredibly high-profit margin, which is about 35-40%. In contrast, financial institutes and banks work with 10-15%, and the much-criticized Walmart has only about 3% profit. These figures come from the excellent and free accessible documentary “Paywall: The Business of Scholarship” \[@schmitt\_paywall\_2018\]. In other posts, I will dwell more about the business model and the nasty role of Elsevier in the Open Science movement.
 
 <!--
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
@@ -162,7 +169,7 @@ However, back to the Open Citations issue regarding Elsevier: It turns out that 
 
 In this post, I have outlined the rationale and significance of the Open Citation movement. Citations reflect the structure and relationship of our scientific and cultural knowledge and deserve research in its own right. As “dwarfs standing on the shoulders of giants” (Isaac Newton and nowadays also the motto of Google), we generate our knowledge from previous discoveries. Citations are the expression of a social network of interconnected links which itself are due to scientific research. Much can be learned of this interplay of different researchers, subject areas, and language communities through different times and regions.
 
-I have also argued that the economic interests of two key players in the research business are obstacles to overcome for a higher rate of Open Citations. Clarivate Analytics form together with Elsevier a duopoly and maybe with Google even a tripoly (Schoolworkhelper 2018): Because of the competition between two or three sellers they cannot work like a monopoly and dictate without consideration their market condition. However, they can work in a kind competition-cooperation relationship; an economic framework called the coopetition paradox (Raza-Ullah, Bengtsson, and Kock 2014).
+I have also argued that the economic interests of two key players in the research business are obstacles to overcome for a higher rate of Open Citations. Clarivate Analytics form together with Elsevier a duopoly and maybe with Google even a tripoly \[@schoolworkhelper\_business\_2018\]: Because of the competition between two or three sellers they cannot work like a monopoly and dictate without consideration their market condition. However, they can work in a kind competition-cooperation relationship; an economic framework called the coopetition paradox \[@raza-ullah\_coopetition\_2014\].
 
 Add relevant links to the subject of Open Citation on my [Wakelet page](https://wakelet.com/@PeterBaumgartner).
 
@@ -172,33 +179,5 @@ Add relevant links to the subject of Open Citation on my [Wakelet page](https://
 <script src="https://embed-assets.wakelet.com/wakelet-embed.js" charset="UTF-8"></script>
 
 ## References
-
-<div id="refs" class="references csl-bib-body hanging-indent">
-
-<div id="ref-mongeon_journal_2016" class="csl-entry">
-
-Mongeon, Philippe, and Adèle Paul-Hus. 2016. “The Journal Coverage of Web of Science and Scopus: A Comparative Analysis.” *Scientometrics* 106 (1): 213–28. <https://doi.org/10.1007/s11192-015-1765-5>.
-
-</div>
-
-<div id="ref-raza-ullah_coopetition_2014" class="csl-entry">
-
-Raza-Ullah, Tatbeeq, Maria Bengtsson, and Sören Kock. 2014. “The Coopetition Paradox and Tension in Coopetition at Multiple Levels.” *Industrial Marketing Management* 43 (2): 189–98.
-
-</div>
-
-<div id="ref-schmitt_paywall_2018" class="csl-entry">
-
-Schmitt, Jason. 2018. “Paywall: The Business of Scholarship (Full Movie) CC BY 4.0.” <https://vimeo.com/273358286>.
-
-</div>
-
-<div id="ref-schoolworkhelper_business_2018" class="csl-entry">
-
-Schoolworkhelper, Editorial Team. 2018. “Business: Monopolies, Oligopolies, Duopoly, Tripoly.” *SchoolWorkHelper*. <https://schoolworkhelper.net/business-monopolies-oligopolies-duopoly-tripoly/>.
-
-</div>
-
-</div>
 
 [^1]: The category “journals” includes books, conference proceedings, and data sets.

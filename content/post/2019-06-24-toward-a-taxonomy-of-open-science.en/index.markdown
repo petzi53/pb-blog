@@ -14,7 +14,7 @@ summary: This post starts a series of ten contributions about a better understan
   to build a hierarchical system where every notion is unambiguous but to develop
   a heuristic tool useful for further research.
 bibliography: ["../../../static/media/references.bib"]
-disable_comments: no
+commentable: true
 draft: no
 ---
 

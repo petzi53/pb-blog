@@ -12,7 +12,7 @@ tags:
 lastmod: ~
 summary: '[In another post](/post/grammarly-improves-your-writing/), I reported on my general experiences with [Grammarly](https://www.grammarly.com). I commented on different use cases, mainly with text pieces from my blog writing. By contrast, this post here focuses on a case study with a literary text piece from a novel.'
 toc: no
-disable_comments: no
+commentable: true
 draft: no
 ---
 
