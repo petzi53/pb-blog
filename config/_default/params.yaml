@@ -16,50 +16,50 @@ site_type: Person
 local_business_type: ''
 org_name: ''
 description: "Peter's Blog on EduTech and RStats"
-twitter: 'http://twitter.com/pbaumgartner'
+twitter: 'pbaumgartner'
 
 # Contact (edit or remove options as required)
 
-email: test@example.org
-phone: 888 888 88 88
-address:
-  street: 450 Serra Mall
-  city: Stanford
-  region: CA
-  postcode: '94305'
-  country: United States
-  country_code: US
-coordinates:
-  latitude: '37.4275'
-  longitude: '-122.1697'
-directions: Enter Building 1 and take the stairs to Office 200 on Floor 2
-office_hours:
-  - 'Monday 10:00 to 13:00'
-  - 'Wednesday 09:00 to 10:00'
-appointment_url: 'https://calendly.com'
-contact_links:
-  - icon: twitter
-    icon_pack: fab
-    name: DM Me
-    link: 'https://twitter.com/Twitter'
-  - icon: skype
-    icon_pack: fab
-    name: Skype Me
-    link: 'skype:echo123?call'
-  - icon: keybase
-    icon_pack: fab
-    name: Chat on Keybase
-    link: 'https://keybase.io/'
-  - icon: comments
-    icon_pack: fas
-    name: Discuss on Forum
-    link: 'https://discourse.gohugo.io'
+# email: test@example.org
+# phone: 888 888 88 88
+# address:
+#   street: 450 Serra Mall
+#   city: Stanford
+#   region: CA
+#   postcode: '94305'
+#   country: United States
+#   country_code: US
+# coordinates:
+#   latitude: '37.4275'
+#   longitude: '-122.1697'
+# directions: Enter Building 1 and take the stairs to Office 200 on Floor 2
+# office_hours:
+#   - 'Monday 10:00 to 13:00'
+#   - 'Wednesday 09:00 to 10:00'
+# appointment_url: 'https://calendly.com'
+# contact_links:
+#   - icon: twitter
+#     icon_pack: fab
+#     name: DM Me
+#     link: 'https://twitter.com/Twitter'
+#   - icon: skype
+#     icon_pack: fab
+#     name: Skype Me
+#     link: 'skype:echo123?call'
+#   - icon: keybase
+#     icon_pack: fab
+#     name: Chat on Keybase
+#     link: 'https://keybase.io/'
+#   - icon: comments
+#     icon_pack: fas
+#     name: Discuss on Forum
+#     link: 'https://discourse.gohugo.io'
 
 # Site header
 
 main_menu:
   enable: true
-  align: l
+  align: r
   show_logo: true
   show_language: false
   show_day_night: true
@@ -87,13 +87,13 @@ math: false
 diagram: false
 privacy_pack: true
 edit_page:
-  repo_url: 'https://github.com/petzi53/pb-blog'
+  repo_url: 'https://github.com/petzi53/blog-hugo'
   content_dir: ''
   repo_branch: main
   editable:
     page: false
     post: true
-    book: false
+    book: true
 show_related:
   book: true
   page: false
@@ -106,11 +106,12 @@ section_pager: false
 docs_section_pager: true
 sharing: true
 copyright_license:
-  enable: false
-  allow_derivatives: false
+  enable: true
+  allow_derivatives: true
   share_alike: true
-  allow_commercial: false
-  notice: 'This work is licensed under {license}'
+  allow_commercial: true
+  notice: 'This work by Peter Baumgartner is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.<br />
+  Permissions beyond the scope of this license may be available at my [contact page](/about#contact). Powered by [blogdown](https://bookdown.org/yihui/blogdown/) and [Hugo](https://gohugo.io/).'
 abstract_length: 135
 plugins_js: []
 plugins_scss: ["custom"]
@@ -158,8 +159,8 @@ marketing:
   baidu_site_verification: ''
   baidu_tongji: ''
 cms:
-  branch: master
+  branch: main
   local_backend: false
 icon:
   pack:
-    ai: false
+    ai: true
