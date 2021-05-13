@@ -5,6 +5,8 @@ header:
   image: ""
 title: Slides
 view: 2
+side_toc: false
+allow_comments: false
 ---
 
 | Date       | Name                                                                                                             |

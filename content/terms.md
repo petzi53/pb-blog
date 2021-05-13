@@ -3,26 +3,27 @@ title: "Disclaimer"
 
 date: 2021-05-11
 draft: false
-commentable: false
+allow_comments: false
+side_toc: true
 lastmod:
 no_coins: yes
 ---
 
-**Media owner:**
+## Media owner
 
 Peter Baumgartner<br /> Herzogstraße 1<br /> 3500 Krems an der Donau
 
-**Website:**
+## Website
 
 Website Content: Peter Baumgartner Hosting and CMS: [Acriba GmbH](https://www.acriba.at/) Photos, if no other author is provided: Peter Baumgartner
 
-**Declaration about the editorial policy:**
+## Declaration about the editorial policy
 
 'Thought splinters' is a personal blog by Peter Baumgartner. It focuses on news and comments about the research and teaching on Technology Enhanced Learning (TEL) and Data Science Education with a special focus on [R](https://www.r-project.org/) subjects.
 
 The content of this website is my personal opinion. The purpose of this website is not commercial and is, therefore, no professional service provided.
 
-**Editorial work:**
+## Editorial work
 
 Editorial staff: Dr. Peter Baumgartner
 

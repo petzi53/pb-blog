@@ -6,7 +6,7 @@
 
   <div class="article-container">
 
-    {{ if  .Params.rmd }}
+    {{ if  eq .Params.side_toc false }}
         <div class="article-style">
               {{ .Content }}
         </div>
@@ -29,6 +29,7 @@
 
   </div>
   {{ end }}
+  {{ if  eq .Params.allow_comments true }}
     <hr>
     <div class="col-12 col-lg-10ish article-style">
     <script src="https://utteranc.es/client.js"
@@ -40,6 +41,7 @@
         async>
     </script>
     </div>
+  {{ end }}
   {{ partial "page_footer" . }}
   </div>
 </article>

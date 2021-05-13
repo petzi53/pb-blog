@@ -3,7 +3,7 @@ title: "Privacy Policy"
 
 date: 2021-05-11
 draft: false
-commentable: false
+allow_comments: false
 lastmod:
 no_coins: yes
 ---

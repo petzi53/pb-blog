@@ -2,6 +2,7 @@
 title: Images in .md Files
 author: Peter Baumgartner
 date: '2021-05-06'
+side_toc: true
 categories:
   - blogdown
 tags:
