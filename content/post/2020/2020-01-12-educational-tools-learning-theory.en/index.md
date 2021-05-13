@@ -14,9 +14,7 @@ summary: 'This article suggests a procedure to categorize the enormous amount
   modes (one-way teaching), dialog settings (two-way education), and collaborative
   scenarios (learning by mastering complex situations). As a proof of concept, I will
   use the [Top Tools for Learning](https://www.toptools4learning.com/) (TT4L), compiled
-  by [Jane Hart](https://www.toptools4learning.com/jane-hart/) as a result of the 13th Annual Learning Tools Survey (published 18
-  September 2019).'
-
+  by [Jane Hart](https://www.toptools4learning.com/jane-hart/) as a result of the 13th Annual Learning Tools Survey (published 18. September 2019).'
 commentable: true
 draft: no
 slug: educational-tools-and-learning-theory

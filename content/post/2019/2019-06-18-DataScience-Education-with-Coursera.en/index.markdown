@@ -16,7 +16,7 @@ summary: 'Beginning in December 2016, I initiated a new personal enterprise: Lea
   of self-determined learners. With the example of learning all the different ways
   to get data into the R environment, I show that designing different learning paths
   for different learner needs could be a solution.'
-bibliography: ["../../../static/media/references.bib"]
+bibliography: ["../../../../static/media/references.bib"]
 link-citations: true
 commentable: true
 draft: no

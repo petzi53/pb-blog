@@ -18,7 +18,7 @@ summary: 'With _Web 2.0_, we see a radical change in scholarly communication.
   Embed bibliographic metadata in your web pages so that they can be cited and count
   as a web publication.'
 slug: bibliographic-metadata-for-your-web-page
-bibliography: ["../../../static/media/references.bib"]
+bibliography: ["../../../../static/media/references.bib"]
 commentable: true
 draft: no
 ---

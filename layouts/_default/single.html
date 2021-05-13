@@ -6,22 +6,30 @@
 
   <div class="article-container">
 
+    {{ if  .Params.rmd }}
+        <div class="article-style">
+              {{ .Content }}
+        </div>
+    {{ else }}
     <div class="row">
 
-    <div class="col-12 col-lg-10ish article-style">
-      {{ .Content }}
-    </div>
+        <div class="col-12 col-lg-10ish article-style">
+          {{ .Content }}
+        </div>
 
-    <div class="col-12 col-lg-2ish docs-toc">
-      <ul class="nav toc-top">
-        <li><a href="#" id="back_to_top" class="docs-toc-title">{{ i18n "on_this_page" }}</a></li>
-      </ul>
+        <div class="col-12 col-lg-2ish docs-toc">
+          <ul class="nav toc-top">
+            <li><a href="#" id="back_to_top" class="docs-toc-title">{{ i18n "on_this_page" }}</a></li>
+          </ul>
 
-      {{ .TableOfContents }}
+          {{ .TableOfContents }}
 
-      {{ partial "docs_toc_foot" . }}
-    </div>
+          {{ partial "docs_toc_foot" . }}
+        </div>
+
   </div>
+  {{ end }}
+    <hr>
     <div class="col-12 col-lg-10ish article-style">
     <script src="https://utteranc.es/client.js"
         repo="petzi53/pb-blog"

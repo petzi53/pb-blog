@@ -4,6 +4,7 @@ subtitle: 'An Exploration'
 author: Peter Baumgartner
 date: '2021-05-05'
 draft: no
+rmd: true
 categories:
   - blogdown
 tags:

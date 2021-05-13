@@ -22,11 +22,11 @@ Last week -- just before Christmas -- I received two badges: [DORA](https://sfdo
 
 The other badge came from [Wakelet](https://learn.wakelet.com/). As I had applied to be part of the Wakelet community, they welcomed me with an email with some tips and hints and issued the Community Badge to me.
 
-+--------------------------------------------------------------+-----------------------------------------------+
-| ![Wakelet Community Badge](images/Community%20badge-min.png) | ![DORA Signatory Badge](images/Dora3-min.png) |
-|                                                              |                                               |
-| #### \*\*Figure 1:\*\* Wakelet Community Badge               | #### \*\*Figure 2:\*\* DORA Signatory Badge   |
-+--------------------------------------------------------------+-----------------------------------------------+
+| Col1 | Col2 |
+|------|------|
+|      |      |
+
++--------------------------------------------------------------+-----------------------------------------------+ \| ![Wakelet Community Badge](images/Community%20badge-min.png) \| ![DORA Signatory Badge](images/Dora3-min.png) \| \| \| \| \| \#\#\#\# \*\*Figure 1:\*\* Wakelet Community Badge \| \#\#\#\# \*\*Figure 2:\*\* DORA Signatory Badge \| +--------------------------------------------------------------+-----------------------------------------------+
 
 So just in time for Christmas Eve, I am honored with these two gratifications. I thought about a little thank-you gift. What I came up with was a Wakelet collection of DORA's newsletter, which essentially is a commented list link. I turned these links into a 'Wake' with some added value: Besides the DORA list, there is additional information in every linked section generated automatically by Wakelet. Additionally, the link list is now more visually appealing. So I killed two birds with one stone: A Wakelet about DORA's advances of the year 2019! Enjoy! (There is more on my [Wakelet Homepage](https://wakelet.com/@PeterBaumgartner))
 
@@ -36,6 +36,4 @@ So just in time for Christmas Eve, I am honored with these two gratifications. I
 
 <!-- Please only call https://embed-assets.wakelet.com/wakelet-embed.js once per page -->
 
-```{=html}
 <script src="https://embed-assets.wakelet.com/wakelet-embed.js" charset="UTF-8"></script>
-```

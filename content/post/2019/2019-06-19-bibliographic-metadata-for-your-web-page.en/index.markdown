@@ -18,7 +18,7 @@ summary: 'With _Web 2.0_, we see a radical change in scholarly communication.
   Embed bibliographic metadata in your web pages so that they can be cited and count
   as a web publication.'
 slug: bibliographic-metadata-for-your-web-page
-bibliography: ["../../../static/media/references.bib"]
+bibliography: ["../../../../static/media/references.bib"]
 commentable: true
 draft: no
 ---
@@ -42,7 +42,7 @@ With *Web 2.0*, we see a radical change in scholarly communication. On the one h
 
 Especially for young researchers (so-called Early Career Researchers, or ECRs[^1] is this situation alarming and even existence-threatening. The find themselves in a double-bind: Should they more invest in traditional ways of career planning, or is it more promising to expand and foster their internet presence? I do not have a clear solution for myself. I think a transition period, the most secure strategy is to follow both paths.
 
-> ECRs have both the most to gain and the most to lose from being at the forefront of changes to scholarly communications (Eve 2014; St. Louis 2015).
+> ECRs have both the most to gain and the most to lose from being at the forefront of changes to scholarly communications \[@eve\_open\_2014; @st.\_louis\_open\_2015\].
 
 ## COinS and Zotero
 
@@ -86,28 +86,8 @@ My suggestion is
 
 There are [several possibilities to generate COinS](https://en.wikipedia.org/wiki/COinS#Client_tools), but I will focus on Zotero. I am not going into further details here, but [I have prepared a tutorial](%60r%20blogdown::shortcode(%22ref%22,%20%222019-06-19-how-to-produce-coins.md%22)%60) with images from all the necessary steps to produce, embed, and download [COinS](https://www.questia.com/magazine/1G1-161981672/coins-what-it-stands-for-context-objects-in-spans).
 
-<div class="notices tip">
-
-Visit my tutorial on [How to produce bibliographic metadata for your web page?](%60r%20blogdown::shortcode(%22ref%22,%20%222019-06-19-how-to-produce-coins.md%22)%60)
-
-</div>
+::: {.notices .tip} Visit my tutorial on [How to produce bibliographic metadata for your web page?](%60r%20blogdown::shortcode(%22ref%22,%20%222019-06-19-how-to-produce-coins.md%22)%60) :::
 
 ## References
-
-<div id="refs" class="references csl-bib-body hanging-indent">
-
-<div id="ref-eve_open_2014" class="csl-entry">
-
-Eve, Martin Paul. 2014. *Open Access and the Humanities: Contexts, Controversies and the Future*. Cambridge: Cambridge University Press. <https://doi.org/10.1017/CBO9781316161012>.
-
-</div>
-
-<div id="ref-st._louis_open_2015" class="csl-entry">
-
-St. Louis, Scott R. 2015. “Open Access and the Humanities: An Interview with Dr. Martin Paul Eve (Right to Research Coalition).” *The Right to Research Coalition Access to Research Is a Student Right*. <http://www.righttoresearch.org/blog/open-access-and-the-humanities-an-interview-with-d.shtml>.
-
-</div>
-
-</div>
 
 [^1]: There are different definitions for ECRs around, varying how many years after a Ph.D. are included. The period starts from [4 years](https://blog.jobs.ac.uk/all-things-research/phd-ecr/) and goes to in some institutions to [10 years](https://blog.soton.ac.uk/athenaswan/ecrs/what-is-an-ecr/). A more detailed description of different research profile descriptors has the European Research Commission ([EURAXESS](https://euraxess.ec.europa.eu/europe/career-development/training-researchers/research-profiles-descriptors))

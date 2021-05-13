@@ -13,7 +13,7 @@ summary: This post starts a series of ten contributions about a better understan
   a taxonomy of Open Science (TOS). The primary goal of this undertaking is not only
   to build a hierarchical system where every notion is unambiguous but to develop
   a heuristic tool useful for further research.
-bibliography: ["../../../static/media/references.bib"]
+bibliography: ["../../../../static/media/references.bib"]
 commentable: true
 draft: no
 ---

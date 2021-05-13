@@ -9,7 +9,7 @@ tags: []
 categories: []
 date: {{ .Date }}
 lastmod: {{ .Date }}
-bibliography: ["../../../static/media/references.bib"]
+bibliography: ["../../../../static/media/references.bib"]
 featured: false
 commentable: true
 draft: false
