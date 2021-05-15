@@ -29,19 +29,7 @@
 
   </div>
   {{ end }}
-  {{ if  eq .Params.allow_comments true }}
-    <hr>
-    <div class="col-12 col-lg-10ish article-style">
-    <script src="https://utteranc.es/client.js"
-        repo="petzi53/pb-blog"
-        issue-term="title"
-        label="comment 👤"
-        theme="github-light"
-        crossorigin="anonymous"
-        async>
-    </script>
-    </div>
-  {{ end }}
+
   {{ partial "page_footer" . }}
   </div>
 </article>
