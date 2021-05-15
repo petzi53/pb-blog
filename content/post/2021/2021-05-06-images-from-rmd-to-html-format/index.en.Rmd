@@ -54,14 +54,16 @@ You can include external images with the [knitr function `include_graphics()`](h
 
 ### Example
 
-```{r img-with-knitr, echo=FALSE, fig.align='center', out.width='100%', fig.cap='Caption for figure 1', fig.alt='Alternative text for figure 1'}
+```{r img-with-knitr, echo=FALSE, fig.align='center', out.width='50%', fig.cap='Caption for figure 1', fig.alt='Alternative text for figure 1'}
 knitr::include_graphics("images/my-image.png")
 ```
+
+{{% callout warning %}} The `fig.align` parameter generally works correctly, but not in this theme. It always centers to a 10 (instead 0f 12) column width. Left and right alignments do not work at all. I could not find and solve the problem.{{% /callout %}}
 
 ### Code in R Chunk
 
     ```
-    {r img-with-knitr, echo=FALSE, fig.align='center', out.width='100%', fig.cap='Caption for figure 1', fig.alt='Alternative text for figure 1'}
+    {r img-with-knitr, echo=FALSE, fig.align='center', out.width='50%', fig.cap='Caption for figure 1', fig.alt='Alternative text for figure 1'}
     knitr::include_graphics("images/my-image.png")
     ```
 
@@ -69,7 +71,7 @@ knitr::include_graphics("images/my-image.png")
 
     ```
     <div class="figure" style="text-align: center"><span id="fig:img-with-knitr"></span>
-        <img src="images/my-image.png" alt="Alternative text for figure 1" width="100%">
+        <img src="images/my-image.png" alt="Alternative text for figure 1" width="50%">
         <p class="caption">
             Figure 1: Caption for figure 1
         </p>
@@ -88,7 +90,7 @@ The relevant selectors for CSS styles are `div.figure` and `p.caption`. We will 
 
 The CSS style I have used to display the image:
 
-    div.figure {
+    img {
             border: 1px;
             border-style: groove;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px  rgba(0, 0, 0, 0.19);

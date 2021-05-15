@@ -1,3 +1,58 @@
+// Starter Blog Template
+// https://wowchemy.com/templates/
+
+.home-section {
+  padding: 3em 0 3em 0;
+}
+
+.home-section.wg-starter-blog-intro {
+  align-items: center;
+  justify-content: center;
+}
+
+.home-section.wg-starter-blog-intro .content {
+  text-align: center;
+}
+
+.home-section > .content {
+  width: 45em;
+  max-width: calc(100% - 4em);
+  margin: 0 auto;
+}
+
+.home-section > .content > :last-child {
+  margin-bottom: 0;
+}
+
+.home-section header {
+  margin-bottom: 1em;
+}
+
+.home-section .wg-starter-blog-intro h2 {
+  font-size: 2.25em;
+  line-height: 1.25em;
+  letter-spacing: -0.05em;
+}
+
+// Narrower container for Hello World sections (primarily Blank widget content).
+@media (min-width: 1200px) {
+  .home-section .container {
+    max-width: 880px;
+  }
+}
+@media (min-width: 992px){
+  .home-section .container {
+    max-width: 880px;
+  }
+}
+
+// Prevent stretching on About page with narrow container
+.avatar {
+  width: auto;
+  height: auto;
+  max-width: 200px;
+  max-height: 200px;
+}
 
 /*----NAV LINK HOVER ANIMATION -----*/
 /* from Desiree: https://github.com/dcossyleon/blogdown_desiree/blob/master/assets/scss/custom.scss */
@@ -60,35 +115,29 @@
 	margin-right: 20px;
 }
 
-p img {
+img {
     border: 1px;
     border-style: groove;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px  rgba(0, 0, 0, 0.19);
 }
 
-figure, div.figure {
-        border: 1px;
-        border-style: groove;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px  rgba(0, 0, 0, 0.19);
-}
 
 div.figure + p { margin-top: 20px; }
 
 
 p.caption {
     text-align: center;
-    margin-top: -0.5rem;
+    margin-top: -1rem;
     margin-bottom: 0.5rem;
-    font-size: smaller;
+    font-size: 0.7rem !important;
 }
+
 
 figcaption {
     text-align: center;
     padding-top: .5rem; /* 1.5rem seems too high */
     font-size: .7rem !important;
 }
-
-
 
 .shadowed {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);

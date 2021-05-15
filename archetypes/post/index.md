@@ -12,15 +12,27 @@ lastmod: {{ .Date }}
 bibliography: ["../../../../static/media/references.bib"]
 featured: false
 commentable: true
+allow_comments: true
+side_toc: true
 draft: false
 
-# Featured image
-# To use, add an image named `featured.jpg/png` to your page's folder.
-# Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
+# Featured image: https://wowchemy.com/docs/content/page-features/#page-resources-attachments-and-links
+# To use, place an image named `featured.jpg/png` in your page's folder.
+# Placement options: 1 = Full column width, 2 = Out-set, 3 = Screen-width
+# Focal point options: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight
+# Set `preview_only` to `true` to just use the image for thumbnails.
 image:
   caption: ""
   focal_point: ""
   preview_only: false
+  
+# Buttons can be generated in the page header to link to associated resources.
+# e.g., PDF button: add a PDF file with the same name as your page’s own folder to your page’s folder
+# links:
+#  - icon_pack: fab
+#    icon: medium
+#    name: Originally published on Medium
+#    url: 'https://medium.com'
 
 # Projects (optional).
 #   Associate this post with one or more of your projects.
@@ -28,4 +40,10 @@ image:
 #   E.g. `projects = ["internal-project"]` references `content/project/deep-learning/index.md`.
 #   Otherwise, set `projects = []`.
 projects: []
+
+# Header image: https://wowchemy.com/docs/content/page-features/#header-image
+# Image is located in assets/media/ (e.g., full path: "assets/media/header.png")
+# header:
+#   image: "header.png"
+#   caption: "Image credit: [**Geo**](https://github.com/gcushen/)"
 ---

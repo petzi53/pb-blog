@@ -11,7 +11,8 @@ date: {{ .Date }}
 lastmod: {{ .Date }}
 featured: false
 draft: false
-
+side_toc: true
+allow_comments: true
 # Featured image
 # To use, add an image named `featured.jpg/png` to your page's folder.
 # Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
