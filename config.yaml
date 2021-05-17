@@ -1,6 +1,6 @@
 title: "Thought splinters"
-baseurl: ''
-copyright: ''
+baseurl: 'https://notes.peter-baumgartner.net/'
+copyright: 'CC BY-SA 4.0'
 timeout: 1000000
 enableGitInfo: no
 defaultContentLanguage: en
@@ -21,10 +21,12 @@ ignoreFiles:
   - \.knit\.md$
   - \.utf8\.md$
 disableAliases: yes
+googleAnalytics: "UA-106194253-6"
 permalinks:
   authors: /author/:slug/
   categories: /category/:slug/
   tags: /tag/:slug/
+  post: /:year/:month/:day/:slug
 outputs:
   home:
     - HTML
