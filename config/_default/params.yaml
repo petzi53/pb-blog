@@ -15,7 +15,7 @@ font_size: L
 site_type: Person
 local_business_type: ''
 org_name: ''
-description: "Peter's Blog on EduTech and RStats"
+description: "Peter's Blog on EdTech and RStats"
 twitter: 'pbaumgartner'
 
 # Contact (edit or remove options as required)
@@ -87,7 +87,7 @@ math: false
 diagram: false
 privacy_pack: true
 edit_page:
-  repo_url: 'https://github.com/petzi53/blog-hugo'
+  repo_url: 'https://github.com/petzi53/pb-blog'
   content_dir: ''
   repo_branch: main
   editable:
