@@ -8,7 +8,7 @@ authors: []
 tags: []
 categories: []
 date: {{ .Date }}
-lastmod: {{ .Date }}
+lastmod: ''
 bibliography: ["../../../../static/media/references.bib"]
 featured: false
 commentable: true
@@ -22,7 +22,9 @@ draft: false
 # Focal point options: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight
 # Set `preview_only` to `true` to just use the image for thumbnails.
 image:
+  placement: ""    
   caption: ""
+  alt_text: ""
   focal_point: ""
   preview_only: false
   

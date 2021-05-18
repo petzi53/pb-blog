@@ -12,14 +12,10 @@ slug: alternatives-for-disqus
 draft: no
 summary: Disqus is a top-rated service for hosting and managing comments. But it has as an external service several disadvantages which oppose the philosophy of static websites diametrically. I discuss some alternatives for integrating discussion fora with static websites.
 # Featured image: https://wowchemy.com/docs/content/page-features/#page-resources-attachments-and-links
-# To use, place an image named `featured.jpg/png` in your page's folder.
-# Placement options: 1 = Full column width, 2 = Out-set, 3 = Screen-width
-# Focal point options: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight
-# Set `preview_only` to `true` to just use the image for thumbnails.
 image:
   placement: 2
   caption: "[Screenshot from the Disqus website](https://disqus.com/)."
-  alt-text: An optional description of the image for screen readers.
+  alt_text: An optional description of the image for screen readers.
   focal_point: "Center"
   preview_only: false
 ---
