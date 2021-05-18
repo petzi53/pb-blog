@@ -1,0 +1,98 @@
+title = "Thought splinters"
+baseurl = "https://notes.peter-baumgartner.net/"
+copyright = "CC BY-SA 4.0"
+timeout = 1_000_000
+enableGitInfo = "no"
+defaultContentLanguage = "en"
+hasCJKLanguage = "no"
+defaultContentLanguageInSubdir = "no"
+removePathAccents = "yes"
+summaryLength = 30
+paginate = 30
+enableEmoji = "yes"
+enableRobotsTXT = "yes"
+footnotereturnlinkcontents = "<sup>^</sup>"
+ignoreFiles = [
+  "\\.ipynb$",
+  ".ipynb_checkpoints$",
+  "\\.Rmd$",
+  "\\.Rmarkdown$",
+  "_cache$",
+  "\\.knit\\.md$",
+  "\\.utf8\\.md$"
+]
+disableAliases = "yes"
+
+# Enable analytics by entering your Google Analytics tracking ID
+googleAnalytics = "UA-106194253-6"
+
+# Enable comments by entering your Disqus shortname
+disqusShortname = "petzi-2"
+
+
+[permalinks]
+authors = "/author/:slug/"
+categories = "/category/:slug/"
+tags = "/tag/:slug/"
+post = "/:year/:month/:day/:slug"
+
+[outputs]
+home = [
+  "HTML",
+  "RSS",
+  "JSON",
+  "WebAppManifest",
+  "headers",
+  "redirects"
+]
+section = [ "HTML", "RSS" ]
+
+[markup]
+defaultMarkdownHandler = "goldmark"
+
+[markup.goldmark.renderer]
+unsafe = true
+
+  [markup.highlight]
+  codeFences = false
+
+  [markup.tableOfContents]
+  endLevel = 3
+  startLevel = 2
+
+[imaging]
+anchor = "smart"
+quality = 75
+resampleFilter = "lanczos"
+
+[taxonomies]
+author = "authors"
+category = "categories"
+tag = "tags"
+
+[related]
+includeNewer = true
+threshold = 80
+toLower = true
+
+  [[related.indices]]
+  name = "title"
+  weight = 60
+
+  [[related.indices]]
+  name = "summary"
+  weight = 50
+
+  [[related.indices]]
+  name = "tags"
+  weight = 80
+
+  [[related.indices]]
+  name = "categories"
+  weight = 70
+
+[[module.imports]]
+path = "github.com/wowchemy/wowchemy-hugo-modules/wowchemy-cms"
+
+[[module.imports]]
+path = "github.com/wowchemy/wowchemy-hugo-modules/wowchemy"

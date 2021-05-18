@@ -54,10 +54,10 @@
   max-height: 200px;
 }
 
-/*----NAV LINK HOVER ANIMATION -----*/
-/* from Desiree: https://github.com/dcossyleon/blogdown_desiree/blob/master/assets/scss/custom.scss */
+// ----NAV LINK HOVER ANIMATION -----*/
+// from Desiree: https://github.com/dcossyleon/blogdown_desiree/blob/master/assets/scss/custom.scss */
 
-/* stroke */
+// stroke
 
 .navbar-nav a.nav-link,
 .navbar-nav a.nav-link:after,
@@ -89,8 +89,8 @@
 
 // Here starts my own CSS (pb)
 
-// my name is too long //
-// font-size 1.6 instead 1,75em //
+// my name is too long
+// font-size 1.6 instead 1,75em
 .portrait-title h2 {
     font-size: 1.6em;
     font-weight: 300;
@@ -132,10 +132,17 @@ p.caption {
     font-size: 0.7rem !important;
 }
 
-
-figcaption {
+// Hugo figure shortcode
+div + figcaption {
     text-align: center;
-    padding-top: .5rem; /* 1.5rem seems too high */
+    padding-top: .5rem;
+    font-size: .7rem !important;
+}
+
+// Append ficaption to Visual R Markdown image GUI
+p + figcaption {
+    text-align: center;
+    margin-top: -1rem;
     font-size: .7rem !important;
 }
 

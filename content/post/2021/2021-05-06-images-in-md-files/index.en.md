@@ -158,3 +158,5 @@ Everything I said about the features of the figure shortcode in the post [Images
 **Table**: Features of different method of inserting images in `.md` files converting with Hugo/Goldmark to HTML
 
 Only Hugo shortcode (with ID and numbered extension by the Academic theme) is the only real choice for figures equipped with all necessary attributes and nice styled.
+
+<span class='Z3988' title='url_ver=Z39.88-2004&amp;ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fzotero.org%3A2&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc&amp;rft.type=blogPost&amp;rft.title=Images%20in%20.md%20Files&amp;rft.source=Thought%20splinters&amp;rft.rights=CC%20BY-SA%204.0&amp;rft.description=The%20post%20investigates%20different%20methods%20to%20include%20images%20in%20%60.md%60%20files%20and%20how%20they%20are%20treated%20in%20the%20Hugo/Goldmark%20conversion%20process%20to%20HTML.&amp;rft.identifier=post%2F2021%2F2021-05-06-images-in-md-files%2Fimages-in-md-files&amp;rft.aufirst=Peter&amp;rft.aulast=Baumgartner&amp;rft.au=Peter%20Baumgartner&amp;rft.date=2021-05-06&amp;rft.language=en'></span> 
