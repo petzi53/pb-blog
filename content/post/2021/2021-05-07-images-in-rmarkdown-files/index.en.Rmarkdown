@@ -10,7 +10,7 @@ tags:
   - Pandoc
   - R Markdown
 slug: images-in-rmarkdown-files
-lastmod: '2021-05-07T08:43:11+02:00'
+lastmod: ''
 featured: no
 image:
   caption: ''
