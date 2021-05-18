@@ -3,7 +3,7 @@ title: Grammarly improves your writing
 author: Peter Baumgartner
 summary: 'The article reports on my experiences with the premium version of Grammarly, an AI-powered web service for grammar and spell checking. As this is going to be a very positive review, I want to disclose that I am not affiliated in any way with Grammarly Inc., the enterprise behind this product.'
 date: '2019-06-07'
-lastmod: '2019-06-08'
+lastmod: ''
 categories:
   - review
   - web-service
@@ -32,7 +32,7 @@ I do not intend to write a tutorial for Grammarly, but I will give you some exam
 
 ### Use case 1: An already published article
 
-I took a \[lengthy article\]({{% relref "2017-10-17-what-is-obvious-and-for-whom" %}}) (about 2.500 words), which I had published two years ago. I copied the markdown formatted text directly into the web interface of Grammarly. This article has a somewhat philosophical flavor so that technical concepts, which Grammarly has not in its dictionary, didn't play a role. I had the text already cleaned up form spelling errors using RStudio's spell checker. Nevertheless, Grammarly came up with more than 125 suggestions for improvements. I didn't think that my English is so bad. How embarrassing!
+I took a [lengthy article](/2017/10/17/what-is-obvious-and-for-whom/) (about 2.500 words), which I had published two years ago. I copied the markdown formatted text directly into the web interface of Grammarly. This article has a somewhat philosophical flavor so that technical concepts, which Grammarly has not in its dictionary, didn't play a role. I had the text already cleaned up form spelling errors using RStudio's spell checker. Nevertheless, Grammarly came up with more than 125 suggestions for improvements. I didn't think that my English is so bad. How embarrassing!
 
 When I inspected the text in detail, it turned out, that 19 suggested "improvements" weren't useful, as they addressed quotes from English books by famous people like [Michael Polanyi](https://www.newworldencyclopedia.org/entry/Michael_Polanyi) or [Ludwig Wittgenstein](https://www.iep.utm.edu/wittgens/). Another four recommendations related to markdown formatted text, where corrections would have resulted in syntax errors. But still there remained about 100 helpful tips! Statistically, Grammarly advised me about possible improvements every 25 words. I was shocked, and even a little depressed!
 
