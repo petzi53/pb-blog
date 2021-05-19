@@ -22,10 +22,10 @@ draft: false
 # Focal point options: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight
 # Set `preview_only` to `true` to just use the image for thumbnails.
 image:
-  placement: ""    
+  placement: 2    
   caption: ""
   alt_text: ""
-  focal_point: ""
+  focal_point: "Center"
   preview_only: false
   
 # Buttons can be generated in the page header to link to associated resources.
