@@ -27,9 +27,10 @@ Using R chunks with `knitr` has the full features as outlined in the post [Image
 
 ### Example
 
-```{r img-with-knitr, echo=FALSE, fig.align='center', out.width='100%', fig.cap='Caption for this figure 1'}
-knitr::include_graphics("images/my-image.png")
-```
+<div class="figure" style="text-align: center">
+<img src="images/my-image.png" alt="Caption for this figure 1" width="100%" />
+<p class="caption">Figure 1: Caption for this figure 1</p>
+</div>
 
 ### Code in R Chunk
 
@@ -109,7 +110,8 @@ The first line is the HTML code for images without width/height parameters. The 
 
 If the RStudio Addin window is used, then the `img` tag should be wrapped into a paragraph. Otherwise it would be generate a conflict with other tags related with images.
 
-```{css}
+
+```css
 p img {
     border: 1px;
     border-style: groove;
@@ -117,6 +119,16 @@ p img {
 }
 
 ```
+
+
+<style type="text/css">
+p img {
+    border: 1px;
+    border-style: groove;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px  rgba(0, 0, 0, 0.19);
+}
+
+</style>
 
 ### Summary
 
@@ -220,3 +232,5 @@ Everything I said about the features of the figure shortcode in the post [Images
 **Table**: Features of different method of inserting images in `.Rmarkdown` files converting to `.markdown` using Pandoc and Hugo/Goldmark.
 
 Although both windows (Addins and Visual R Markdown windows) are not equipped with all the necessary attributes, here we have in contrast to `.md` files also the alternative with `knitr` chunks. So in way: `.Rmarkdown` files are the best of both worlds! (This is also true with the Table of Contents, which works here as well.)
+
+<span class='Z3988' title='url_ver=Z39.88-2004&amp;ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fzotero.org%3A2&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc&amp;rft.type=blogPost&amp;rft.title=Images%20in%20Rmarkdown%20Files&amp;rft.source=Thought%20splinters&amp;rft.rights=CC%20BY-SA%204.0&amp;rft.description=The%20post%20investigates%20different%20methods%20to%20include%20images%20in%20%60.Rmd%60%20files%20and%20how%20they%20are%20treated%20in%20the%20%60blogdown%60%20conversion%20process%20to%20.markdown%20files.&amp;rft.identifier=https%3A%2F%2Fnotes.peter-baumgartner.net%2F2021%2F05%2F07%2Fimages-in-rmarkdown-files&amp;rft.aufirst=Peter&amp;rft.aulast=Baumgartner&amp;rft.au=Peter%20Baumgartner&amp;rft.date=2021-05-07&amp;rft.language=en'></span> 
