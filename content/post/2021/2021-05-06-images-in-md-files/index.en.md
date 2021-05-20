@@ -14,6 +14,7 @@ slug: images-in-md-files
 lastmod: ''
 featured: no
 image:
+  placement: 2
   caption: ''
   focal_point: ''
   preview_only: no

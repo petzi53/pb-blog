@@ -17,6 +17,7 @@ slug: images-from-rmd-to-html-format
 lastmod: '2021-05-05'
 featured: no
 image:
+  placement: 2
   caption: ''
   focal_point: ''
   preview_only: no
@@ -351,6 +352,10 @@ To sum up this this little investigation I see three patterns of decisions crite
 -   Another decision criteria could be consistency: If you are using R chunks (which is the major reason to use the .Rmd format!) and want to be consistent throughout the file, then the decision for the `knitr` method is obvious.
 
 But let's see what the other file format are producing. For people using different methods[^2] for their posts perhaps the comparison inside one file format is not sufficient. Perhaps there is a method not ideal when considered only one file format but has a higher consistency when looked all file format together.
+
+```{=html}
+<span class='Z3988' title='url_ver=Z39.88-2004&amp;ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fzotero.org%3A2&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc&amp;rft.type=blogPost&amp;rft.title=Images:%20From%20R%20Markdown%20to%20HTML%20format&amp;rft.source=Thought%20splinters&amp;rft.rights=CC%20BY-SA%204.0&amp;rft.description=The%20post%20investigates%20different%20methods%20to%20include%20images%20in%20%60.Rmd%60%20files%20and%20how%20they%20are%20treated%20in%20the%20%60blogdown%60%20conversion%20process%20to%20HTML.&amp;rft.identifier=https%3A%2F%2Fnotes.peter-baumgartner.net%2F2021%2F05%2F05%2Fimages-from-rmd-to-html-format&amp;rft.aufirst=Peter&amp;rft.aulast=Baumgartner&amp;rft.au=Peter%20Baumgartner&amp;rft.date=2021-05-05&amp;rft.language=en'></span> 
+```
 
 [^1]: Helper functions to write Hugo shortcodes using the R syntax
 

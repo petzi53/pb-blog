@@ -6,7 +6,7 @@
 # Appearance
 
 theme: Ocean
-day_night: true
+day_night: false
 font: ''
 font_size: L
 
@@ -77,12 +77,8 @@ address_format: en-us
 highlight: true
 highlight_languages:
   - r
-  - python
-  - latex
-  - markdown
-  - javascript
-  - css
-highlight_style: "vs"
+  - yaml
+highlight_style: ''
 math: false
 diagram: false
 privacy_pack: true

@@ -1,9 +1,10 @@
 ---
-title: "Educational Tools & Learning Theory"
+title: "Educational Tools and Learning Theory"
 author: "Peter Baumgartner"
 date: '2020-01-12'
+lastmod: '2021-05-20'
 categories:
-- eduTech
+- edTech
 - learning-theory
 tags:
 - educational-design
@@ -18,6 +19,12 @@ summary: 'This article suggests a procedure to categorize the enormous amount
 commentable: true
 draft: no
 slug: educational-tools-and-learning-theory
+image:
+  placement: 2    
+  caption: "[Top 100 Tools for Personal Learning 2020. By Jane Hart](https://www.toptools4learning.com/wp-content/uploads/2020/08/tt4l2020pl-624x468.jpg)"
+  alt_text: "Map of Logoi from Top 100 Tools organized around broad categories."
+  focal_point: "Center"
+  preview_only: false
 ---
 
 {{< figure src="images/2019-C4LPT-categorization-min.png" class="border shadowed floatright" alt="Categories of tools by Jane Hart" >}}
@@ -133,3 +140,7 @@ To summarize my suggestion for an educational categorization of digital tools, I
 -   **Learning IV**: Multi-purpose tool with features for Learning III **and** either Learning 0 or Learning I.
 
 ... to be continued
+
+{{% callout note %}} Update 2021-05-20: Originally, I have planned to reorganize Jane Hart's data according to my set of categories. But unfortunately, because of other priorities, I didn't have time so far. But the follow-up of this post is still on my schedule. {{% /callout %}}
+
+<span class='Z3988' title='url_ver=Z39.88-2004&amp;ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fzotero.org%3A2&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc&amp;rft.type=blogPost&amp;rft.title=Educational%20Tools%20and%20Learning%20Theory&amp;rft.source=Thought%20splinters&amp;rft.rights=CC%20BY-SA%204.0&amp;rft.description=This%20article%20suggests%20a%20procedure%20to%20categorize%20the%20enormous%20amount%20of%20educational%20tools%20in%20the%20market.%20My%20approach%20uses%20a%20framework%20of%20three%20well-grounded%20learning%20theories:%20Instruction,%20Cognition,%20and%20Construction%20based%20on%20presentation%20modes%20(one-way%20teaching),%20dialog%20settings%20(two-way%20education),%20and%20collaborative%20scenarios%20(learning%20by%20mastering%20complex%20situations).%20As%20a%20proof%20of%20concept,%20I%20will%20use%20the%20[Top%20Tools%20for%20Learning](https://www.toptools4learning.com/)%20(TT4L),%20compiled%20by%20[Jane%20Hart](https://www.toptools4learning.com/jane-hart/)%20as%20a%20result%20of%20the%2013th%20Annual%20Learning%20Tools%20Survey%20(published%2018.%20September%202019).&amp;rft.identifier=https%3A%2F%2Fnotes.peter-baumgartner.net%2F2020%2F01%2F12%2Feducational-tools-and-learning-theory&amp;rft.aufirst=Peter&amp;rft.aulast=Baumgartner&amp;rft.au=Peter%20Baumgartner&amp;rft.date=2020-01-12&amp;rft.language=en'></span>

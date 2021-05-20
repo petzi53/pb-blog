@@ -709,3 +709,36 @@ padding-left: 28px;
 }
 /* ***************************************************** */
 /* ********************     BOOTSTRAP 3  *************** */
+
+.blackbox {
+  padding: 1em;
+  background: black;
+  color: white;
+  border: 2px solid orange;
+  border-radius: 10px;
+}
+.center {
+  text-align: center;
+}
+
+
+.r {
+    display: block;
+    overflow-x: auto;
+    padding: .2em;
+    color: white;
+    background: lightgrey;
+}
+
+code.hljs, div.ReactTable {
+    display: block;
+    overflow-x: auto;
+    padding: .5em;
+    color: #333;
+    background: #f8f8f8;
+    font-size: .7rem;
+}
+
+
+
+
