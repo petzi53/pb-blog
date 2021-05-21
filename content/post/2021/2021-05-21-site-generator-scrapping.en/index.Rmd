@@ -1,0 +1,451 @@
+---
+title: "Retrieving And Scrapping Archived Data With The Wayback Machine"
+author: "Peter Baumgartner"
+date: "`r Sys.Date()`"
+draft: true
+---
+
+# Setup
+
+```{r label = "global-options", highlight=TRUE}
+knitr::opts_chunk$set(
+        message = F,
+        error = F,
+        warning = F,
+        comment = NA,
+        highlight = T,
+        prompt = T
+        )
+### Set the global option options(stringsAsFactors = FALSE) 
+### inside a parent function and restore the option after the parent function exits
+if (!require("xfun"))
+        {install.packages("xfun", repos = 'http://cran.wu.ac.at/')
+        library(xfun)}
+xfun::stringsAsStrings()
+
+
+### install and load some important packages
+### https://github.com/tidyverse/tidyverse
+if (!require("tidyverse"))
+        {install.packages("tidyverse", repos = 'http://cran.wu.ac.at/')
+        library(tidyverse)}
+
+### above command installed and loaded the core tidyverse packages:
+# ggplot2:    data visualisation
+# tibble:     a modern take on data frames
+# tidyr:      data tidying
+# readr:      data import (csv, tsv, fwf)
+# purrr:      functional R programming
+# dplyr:      data (frame) manipulation
+# stringr:    string manipulation
+# forcats:    working with categorial varialbes
+# tidyselect: backend for the selecting functions of the 'tidyverse'. (?, new?)
+
+
+### My reminder for other essential packages:
+### Working with times:
+# hms, for times.
+
+# lubridate, for date/times.
+if (!require("lubridate"))
+        {install.packages("lubridate", repos = 'http://cran.wu.ac.at/')
+        library(lubridate)}
+
+### Importing other types of data:
+# feather, for sharing with Python and other languages.
+# haven, for SPSS, SAS, and Stata files.
+# httr, for web APIs.
+# jsonlite for JSON.
+# readxl, for .xls and .xlsx files.
+
+
+# rvest, for web scraping.
+if (!require("rvest"))
+        {install.packages("rvest", repos = 'http://cran.wu.ac.at/')
+        library(rvest)}
+
+
+# xml2, for XML.
+if (!require("xml2"))
+        {install.packages("xml2", repos = 'http://cran.wu.ac.at/')
+        library(xml2)}
+
+### Modelling
+# modelr, for modeling within a pipeline
+# broom, for turning models into tidy data
+
+
+### Special packages for this article
+if (!require("wayback"))
+        {remotes::install_github("hrbrmstr/wayback", build_vignettes = TRUE)
+        library(tidyverse)}
+```
+
+# Preliminaries
+
+In a [previous article](/2019/07/22/archiving-quoted-web-resources/), I wrote about the possibilities of the [Wayback Machine](https://archive.org/web/) for scientific writing. I argued that archiving web pages are essential for references as they prevent link rots when cited web resources are not available anymore. With this blog entry, I am looking quasi into the reverse option: How to find and retrieve archived web pages for research reasons?
+
+Archives web pages as permanently stored data are indispensable for reproducibility issues. But they are also valuable research resources as they are data for historical and comparative research. I will demonstrate the research significance with the historical analysis of [static website generators](https://www.staticgen.com/). This here is the first part and shows how to use the Wayback Machine for retrieving archived web pages. The second part displays the results of the analysis which would not be possible without web archiving.
+
+The nitty-gritty of this article comes from the excellent work of [Bob Rudis](https://rud.is/), who wrote many well documented [Tools to Work with the Various Internet Archive Wayback Machine APIs](https://github.com/hrbrmstr/wayback).
+
+## Does the Internet Archive have my research URL cached?
+
+Using `archive_available(url, timestamp)`: Timestamp is optional. The function returns a tibble with one observation and 5 variables:
+
+```{r url-cached}
+staticgen_avail <- archive_available("https://www.staticgen.com/")
+saveRDS(staticgen_avail, file = "data/staticgen_avail.rds")
+staticgen_avail
+```
+
+## Retrieve site mementos from the Internet Archive
+
+Mementos are prior versions of web pages that have been cached from web crawlers. They can be found in web archives (such as the Internet Archive) or systems that support versioning such as wikis or revision control systems.
+
+With `get_mementos(url, timestamp = format(Sys.Date(), "%Y"))` we will receive a short list of relevant links to the archived content. The function returns the four link relation types as in the [Request for Comment for the Memento framework](https://mementoweb.org/guide/rfc/#Link-Header-Relation-Types) outlined.
+
+1.  Link Relation Type "original"
+2.  Link Relation Type "timemap"
+3.  Link Relation Type "timegate"
+4.  Link Relation Type "memento"
+
+Besides these four main types of link relations, the function also provides the first, previous, and last available memento, which usually is identical with the memento link relation type. In addition to the two columns `link' and`rel`there is a third one`ts\`, containing the timestamps (empty for the first three link relation types). The return value in total is a tibble with seven observations (rows) and three columns.
+
+```{r get-mementos}
+staticgen_mntos <- get_mementos("https://www.staticgen.com/")
+saveRDS(staticgen_mntos, file = "data/staticgen_mntos.rds")
+staticgen_mntos
+```
+
+## Get the point-in-time memento crawl list
+
+Providing an URL in the search field of the Wayback Machine results in the interactive browser version to the [calendar view](https://web.archive.org/web/*/https://www.staticgen.com). In the calendar view, you can inspect the dates with archived content, which are either blue or green (redirected URL) circled. The bigger the circles, the more snapshots were archived on these dates.
+
+We get these dated crawl list with the second observation of the `get_mementos` function.
+
+```{r get-timemap}
+staticgen_tm <- get_timemap(staticgen_mntos$link[2])
+saveRDS(staticgen_tm, file = "data/staticgen_tm.rds")
+staticgen_tm
+```
+
+Included in the `r nrow(staticgen_tm)` captures of the interactive browser version, there are four rows relating to the four link relation types mentioned above. The last line is empty.
+
+## Summary: Putting all together
+
+We can put together all three preliminary steps into a function `get_rawcrawl(url)`. This function gets an URL and returns a list of all archived versions for this URL.
+
+1.  Check if for the URL exists an archived version. If not: stop the execution of the program.
+2.  If an archived version exists, then retrieve mementos for this URL from the Internet Archive.
+3.  Get the point-in-time memento crawl list for this URL
+
+```{r get-raw-crawl}
+get_rawcrawl <- function(url) {
+  if(is_url(url)) {
+    url_archived <- archive_available(url) 
+    if (url_archived$available) {
+      mementos <- get_mementos(url)
+      time_map <- get_timemap(mementos$link[2])
+      return(time_map)
+    } else {
+      return(paste0("There exists no archive of '", url, "'."))
+    }
+  } else {
+    stop("The functions needs a valid URL format: 'http://' or 'https://'")
+  }
+}
+
+is_url <- function(s) {
+  class(s) == "character" && (substr(s,1,7) == "http://" || substr(s,1,8) == "https://")
+}
+
+sg_rawcrawl <- get_rawcrawl("https://www.staticgen.com/")
+saveRDS(sg_rawcrawl, file = "data/sg_rawcrawl.rds")
+sg_rawcrawl
+```
+
+# Tidy data
+
+## Introduction
+
+At first, we have to clean up our data frame of URLs to crawl. Tidying the time map data frame is a multiple-step procedure:
+
+-   Clean up so that only memento links remain
+-   Delete unnecessary rows `type` and `from`.
+-   Convert row `datetime` from class 'character' to class 'datetime'.
+-   Delete duplicate the datetime records. (Sometimes there is more than one capture taken on the same day, referring to the URL and the port used.)
+-   Filter rows with an algorithm, so that only those mementos remain which are suitable for the comparison analysis. For instance: Take the first memento for every year or every month etc.
+
+The last step is unique as it requires a decision by the author or analyst of the data.
+
+## General data cleaning
+
+```{r get-clean-crawl}
+get_cleancrawl <- function(df) {
+  df$datetime <- as.POSIXct(df$datetime, format = "%a, %d %b %Y")
+  df_crawl <- df %>% 
+      filter(rel == "memento") %>%
+      select(link, datetime) %>%
+      distinct(datetime, .keep_all = TRUE)  # delete duplicate datetime
+  return(df_crawl)
+}
+
+sg_rawcrawl <- readRDS("data/sg_rawcrawl.rds")
+sg_cleancrawl <- get_cleancrawl(sg_rawcrawl)
+saveRDS(sg_cleancrawl, file = "data/sg_cleancrawl.rds")
+sg_cleancrawl
+```
+
+## Filter crawl list
+
+The next function is more complicated as it provides several possibilities:
+
+1.  Limit comparison period:
+
+    1.  Choose the start of comparison period by row number.
+    2.  Choose the start of comparison period by (nearest) date.
+    3.  Choose the end of comparison period by row number.
+    4.  Choose the end of comparison period by (closest) date.
+
+2.  Adding URLs in any case, independent of the chosen filter algorithm:
+
+    1.  Add URL of the last memento in any case, independent of the filter option.
+    2.  Add URL of the live web site with datetime of today to the end of the data frame.
+
+3.  Mode of calculation of the chosen algorithm:
+
+    1.  Take always first entry of the selected period.
+    2.  Take always last entry of the selected period.
+    3.  Take datetime of your first chosen memento to calculate the period.
+
+4.  Filter rows with one of the following options:
+
+    1.  **Year:** One URL to crawl for every year.
+    2.  **Half-year (six months):** One URL to crawl for every six months.
+    3.  **Quarter (three months):** One URL to crawl for every quarterly period.
+    4.  **Month:** One URL to craw for every month.
+    5.  **Number:** Filter <number> URLs with roughly the equidistance of time.
+
+Limiting the comparison period is useful for several reasons: + To restrict the period for the data analysis. + Ignore the first mementos of an archived web site because they have not enough information. + Generate various collections of mementos, depending on their different structure to crawl.
+
+At the moment, I have only implemented: 1.1, 2.2, 3.1, and 4.1.
+
+```{r filter-craw-list}
+get_crawllist <- function(
+  df, start=1, end=nrow(df),
+  last_mnto=FALSE, live_url="",
+  choose_mnto='first',
+  filter_mntos='year') {
+  
+  if (start != 1) {df <- tail(df, -start)}
+  
+  if (filter_mntos == 'year') {
+    crawl_list <- df %>%
+    mutate(year = year(datetime)) %>%
+    # http://bit.ly/2K0oho0
+    group_by(year) %>%
+    filter(datetime == min(datetime)) %>% 
+    ungroup()
+  }
+  if (!live_url == '') {
+    live_wbpg <- tibble(link = live_url, 
+                        datetime = as_datetime(today()), 
+                        year = as.numeric(2019))
+    crawl_list <- data.frame(rbind(crawl_list, live_wbpg))
+  }
+  return(crawl_list)
+}
+
+
+sg_cleancrawl <- readRDS("data/sg_cleancrawl.rds")
+# The first 12 mementos have a different web site structure
+# I am loosing about 8 month for the comparison
+sg_crawllist <- get_crawllist(sg_cleancrawl, start = 13, live_url = "https://www.staticgen.com/")
+saveRDS(sg_crawllist, file = "data/sg_crawllist.rds")
+sg_crawllist
+
+```
+
+```{r list-xml-docs, eval=FALSE}
+
+# create a list of xml documents
+# this is the central information I am going to scrap later on
+# this takes some time (minutes) and strains the Internet Archive server
+sg_crawllist <- readRDS("data/sg_crawllist.rds")
+sg_wbpg <- lapply(sg_crawllist$link, read_html)
+sg_wbpg
+# I do not know how to store & retrieve `sg_wbpg`. 
+# It is a XML document with a pointer list. 
+# Maybe it has to do with serialize/unserialize?
+# I have tried several variants (see next chunk), but in vain.
+
+
+```
+
+```{r save-restore-xml-doc, eval=FALSE, include=FALSE}
+
+# # bit.ly/SO-save-xml
+# cannot store xml information for later retrieval
+# roundtrip <- function(obj) {
+#   tf <- tempfile()
+#   con <- file(tf, "wb")
+#   on.exit(unlink(tf))
+# 
+#   xml_serialize(obj, con)
+#   close(con)
+#   con <- file(tf, "rb")
+#   on.exit(close(con), add = TRUE)
+#   xml_unserialize(con)
+# }
+#
+## tried to store & retrieve XML information: didn't work!
+# test_wbpg <- sg_wbpg
+# my_data <- test_wbpg
+# con <- file("data/my_data", "wb")
+# serialize(my_data, con)
+# y <- roundtrip(test_wbpg[[1]])
+
+######################
+# checking if the web pointer refers correctly to the archived web pages
+# mem <- read_memento(sg_crawllist$link[1])
+# sg_test <- readRDS("data/sg_wbpg.rds")
+# load("data/sg_webpage.Rdata")
+# attach("data/sg_webpage.Rdata")
+
+# xml_doc <- my_xml
+# 
+# test_wbpg <- sg_wbpg
+# 
+# write_xml(test_wbpg[[1]], "data/test_html", options = "format" )
+# t <- readLines("data/test_html")
+# 
+# con <- file("data/test1_xml", open = "wb")
+# xml_serialize(test_wbpg[[1]], con)
+# flush(con)
+# close(con)
+# 
+# 
+# con <- file("data/test1_xml", open = "rb")
+# on.exit(close(con), add = TRUE)
+# test1_xml <- xml_unserialize(con)
+# memento2014 <- t
+# memento2014 %>%
+#   html_nodes("h4") %>%
+#   html_text()
+# memento2014  %>%
+#   html_nodes(".stat") %>%
+#   html_text()
+
+```
+
+# Web page crawl
+
+## Introduction
+
+We have stored the web pages as XML-documents in `sg_wbpg` and are now able to retrieve the relevant data for our analysis. Using the code inspector of Google Chrome, we will eventually find two essential items to retrieve content for our study.
+
+But there is a wicked problem: It turns out that the structure of the website has several times changed. So we have to inspect every instance of `sg_crawlist` interactively to detect how we can retrieve the data for our analysis. It means we have to go to the archived webpage and apply Google Chrome inspector to find out the HTML/XML node we have to apply. We can test our findings with the appropriate subsetting of `sg_wbpg`.
+
+## HTML structure of websites
+
+It turns out that for all mementos the `h4` tag will produce the name of the static website generator.
+
+For the data values, the situation is more complicated:
+
+-   **Between 2014 and 2018** the data will be scraped with the CSS class selector `.stats`. It produces for every name three values: repo stars, open issues, and repo forks.
+-   **2019** needs the CSS class selector `.OpenSourceStat-fXFkTK`. It produces for every name four values: repo stars, open issues, repo forks, and twitter followers. Every value contains a `+` or `-` sign followed by the number of changes since the last update of the website. I delete the figure for the changes as the last update is not relevant for my analysis; respectively, my data will show the changes between the dates of the mementos retrieval.
+-   **Live website** has with `OpenSourceStat-sc-1jlkb1d-2` still another CSS class selector. I am somewhat worried that future updates of the website will always have different CSS class selectors. It seems that the random endings after the dash are generated automatically by the Content Management System (CMS).
+
+## Dataframe with specific retrieval information
+
+For the main function `get_content` I will store specific retireval information with the following items:
+
+-   Internet Archive link to crawl (from `sg_crawllist`)
+-   datetime (from `sg_crawllist`)
+-   Tag to retrieve the names ("h4")
+-   CSS class to retrieve the data (".stat", ".OpenSourceStat-fXFkTK" and ".OpenSourceStat-sc-1jlkb1d-2")
+-   Number of data items to build different columns
+-   Specific information for cleaning up the data itmes (regex: "[:digit:]+")
+
+```{r sg-retrival}
+sg_crawllist <- readRDS("data/sg_crawllist.rds")
+get_names <- rep("h4", nrow(sg_crawllist))
+get_data <- c(rep(".stat", 5), ".OpenSourceStat-fXFkTK", ".OpenSourceStat-sc-1jlkb1d-2")
+get_cols <- c(rep(3L, 5), 4L, 4L)
+get_regex <- c(rep("", 5), rep("[:digit:]+",2))
+sg_retrieval <- cbind(sg_crawllist[1:2], get_names, get_data, get_cols, get_regex)
+names(sg_retrieval) <- c("link", "datetime", "name", "data", "n_cols", "regex")
+saveRDS(sg_retrieval, file = "data/sg_retrieval.rds")
+```
+
+# Producing data frames with the retrieved data
+
+## Retrieve and scrap web pages
+
+To retrieve the content from the web pages stored in sg_retrieval we can use the following code:
+
+```{r get-content, eval=FALSE}
+# sg_wbpg <- readRDS("data/sg_wbpg.rds") does not work!!!!!!
+# to run this junk you need to have `sg_wbpg` in memory!!!
+# but luckily I have stored the scrapped result into `data/sg_data_collection.rds`
+
+sg_retrieval <- readRDS("data/sg_retrieval.rds")
+# remember that I set with xfun() global option `stringsAsFactors = FALSE`. 
+# See chunk `global-option` at the beginning of this file
+
+get_content <- function(xml_document, df_retrieval) {
+  sg_list = list()
+  for (i in 1:length(xml_document)) {
+    
+    # prepare specific retrieval modes
+    xml_doc <- xml_document[[i]]
+    name_node <- df_retrieval$name[i]
+    data_node <- df_retrieval$data[i]
+    extract_data <- df_retrieval$regex[i]
+    n_cols <- df_retrieval$n_cols[i]
+    
+    # retrieve data
+    sg_names <- xml_doc %>%
+      html_nodes(name_node) %>%
+      html_text()
+    sg_data <- xml_doc %>% 
+      html_nodes(data_node) %>%
+      html_text()
+    # delete second part of the string, starting with '+'
+    # these changes of days from the last update of web sites are not relevant for my analysis,
+    # because I am using the figures from the timed mementos
+    if (extract_data != '') {
+      sg_data <- as.integer(stringr::str_extract(sg_data, extract_data))
+    }
+    # convert character string to data frame with 3 or 4 columns. See: bit.ly/SO-vec-to-df
+    sg_data <- data.frame(matrix(sg_data, ncol = n_cols, byrow = TRUE))
+    sg_data <- data.frame(cbind(sg_names, sg_data))
+    if (n_cols == 3) {
+      names(sg_data) <- list("name", "repo_stars", "open_issues", "repo_forks")
+    }
+    if (n_cols == 4) {
+      names(sg_data) <- list("name", "repo_stars", "open_issues", "repo_forks", "twitter_followers")
+    }
+    
+    # append dataframe to end of the data_list
+    sg_list[[i]] <- sg_data
+  }
+  return(sg_list)
+}
+
+sg_data_collection <- get_content(sg_wbpg, sg_retrieval)
+saveRDS(sg_data_collection, file = "data/sg_data_collection.rds")
+
+```
+
+## Correct name of "next.js" generator
+
+In a detailed inspection, it turned out the static generator `next.js` has changed its name from `next`. The following code chunk corrects this so that there are no problems in the subsequent analysis (= part two).
+
+```{r correct-name-next-js-generator}
+sg_data_collection <- readRDS("data/sg_data_collection.rds")
+sg_data_collection[[6]]$name[2] <- "Next.js"
+saveRDS(sg_data_collection, file = "data/sg_data_collection.rds")
+sg_data_collection <- readRDS("data/sg_data_collection.rds")
+```
