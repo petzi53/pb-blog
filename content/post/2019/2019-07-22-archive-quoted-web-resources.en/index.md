@@ -19,12 +19,14 @@ summary: 'Quoting websites is a hassle for several reasons: Firstly, web pages
 commentable: true
 draft: no
 slug: archiving-quoted-web-resources
+side_toc: no
+image:
+  placement: 2    
+  caption: 'Photo by [Maksym Kaharlytskyi](https://unsplash.com/@qwitka) on [Unsplash](https://unsplash.com/s/photos/file-card)'
+  alt_text: "File cabinet with an open drawer containing index cards."
+  focal_point: "Center"
+  preview_only: false
 ---
-
-<figure class="border shadowed floatright">
-  <img src="images/archiving-web-resources.jpg" alt="Picture of an archive" />
-  <figcaption>Image by <a href="https://pixabay.com/users/creativesignature-1460253/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1633406">Chris Stermitz</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1633406">Pixabay</a></figcaption>
-</figure>
 
 Quoting web resources is a hassle for several reasons:
 
@@ -47,10 +49,10 @@ Luckily with [Wayback Machine](https://web.archive.org/save)[^1], operated by th
 
 <div class="notices info" >
 <p class="centered">
-Visit my tutorial on [How-to use Wayback Machine for the general public](/slide/wayback-machine-tutorial/).
+Visit my slides on [How-to use Wayback Machine for the general public](/slides/2019-07-21-wayback-machine-tutorial/).
 </div>
 
-<img class="border shadow" src="images/wayback-machine-start-page-min.png" alt="Start page of the Wayback Machine, a service by the Internet Archive" width=100% /> <figcaption><h4>**Figure 2:** Start page of the Wayback Machine, a service by the Internet Archive</h4></figcaption>
+<img src="images/wayback-machine-start-page-min.png" alt="Start page of the Wayback Machine, a service by the Internet Archive" class="border shadow" width="100%"/> <figcaption>**Figure 2:** Start page of the Wayback Machine, a service by the Internet Archive</figcaption>
 
 ## How to cite archived resources?
 
@@ -93,5 +95,7 @@ In addition to the following [Wakelet](https://wakelet.com/), there is also a [c
 <!-- Please only call https://embed-assets.wakelet.com/wakelet-embed.js once per page -->
 
 <script src="https://embed-assets.wakelet.com/wakelet-embed.js" charset="UTF-8"></script>
+
+<span class='Z3988' title='url_ver=Z39.88-2004&amp;ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fzotero.org%3A2&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc&amp;rft.type=blogPost&amp;rft.title=Archiving%20Quoted%20Web%20Resources&amp;rft.source=Thought%20splinters&amp;rft.rights=CC%20BY-SA%204.0&amp;rft.description=Quoting%20websites%20is%20a%20hassle%20for%20several%20reasons:%20Firstly,%20web%20pages%20are%20not%20available%20anymore.%20Secondly,%20web%20pages%20have%20moved%20so%20that%20the%20URL%20is%20not%20valid%20anymore.%20Thirdly,%20they%20change%20their%20content%20so%20that%20the%20cited%20reference%20is%20not%20correct%20anymore.%20This%20article%20presents%20some%20strategies%20and%20tools%20to%20bypass%20the%20challenges%20mentioned%20above.&amp;rft.identifier=https%3A%2F%2Fnotes.peter-baumgartner.net%2F2019%2F07%2F22%2Farchiving-quoted-web-resources&amp;rft.aufirst=Peter&amp;rft.aulast=Baumgartner&amp;rft.au=Peter%20Baumgartner&amp;rft.date=2019-07-22&amp;rft.language=en'></span>
 
 [^1]: To access this page you must be registered by [archive.org](https://archive.org/).
