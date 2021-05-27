@@ -721,24 +721,44 @@ padding-left: 28px;
   text-align: center;
 }
 
-
-.r {
+pre {
     display: block;
-    overflow-x: auto;
-    padding: .2em;
-    color: white;
-    background: lightgrey;
+    padding: 8.5px;
+    margin: 0 0 9px;
+    font-size: 0.8rem;
+    line-height: 1.42857143;
+    word-break: break-all;
+    word-wrap: break-word;
+    color: #444444;
+    background-color: #f5f5f5;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    overflow: auto;
 }
 
-code.hljs, div.ReactTable {
-    display: block;
-    overflow-x: auto;
-    padding: .5em;
-    color: #333;
-    background: #f8f8f8;
-    font-size: .7rem;
+code, kbd, pre, samp {
+    font-family: monospace;
 }
 
+img {
+    border: 1px;
+    border-style: groove;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px  rgba(0, 0, 0, 0.19);
+}
 
+img.inline-icon {
+    display: inline !important;
+	float: left;
+    margin: 0 !important;
+    padding-right: 10px;
+    vertical-align: bottom;
+    border: 0 !important;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0), 0 0 0  rgba(0, 0, 0, 0) !important;
 
+}
 
+.reactable {
+    font-size: 0.8rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
