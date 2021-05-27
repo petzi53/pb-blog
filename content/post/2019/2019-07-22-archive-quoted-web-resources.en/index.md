@@ -21,7 +21,7 @@ draft: no
 slug: archiving-quoted-web-resources
 side_toc: no
 image:
-  placement: 2    
+  placement: 2
   caption: 'Photo by [Maksym Kaharlytskyi](https://unsplash.com/@qwitka) on [Unsplash](https://unsplash.com/s/photos/file-card)'
   alt_text: "File cabinet with an open drawer containing index cards."
   focal_point: "Center"
@@ -41,18 +41,33 @@ Humanities, where detailed content analysis of websites is a popular research me
 With [WebCite](https://webcitation.org/), there used to be a web service to circumvent link rot and changed the content. WebCite [allowed to archive online resources](https://en.wikipedia.org/wiki/Wikipedia:Using_WebCite) and returned an URL where these filed pages could be accessed. Besides that this service was often down and therefore [notoriously unreliable](https://en.wikipedia.org/wiki/Talk%3AWebCite), as of July 14, 2019, it does not accept any new archive requests anymore.
 
 <figure class="border shadowed">
-  <img src="images/WebCite-service-not-available-anymore-min.png" alt="Start page of the WebCite service, proclaiming that new archiving request are currently not feasible anymore." />
-  <figcaption><strong>Figure 1:</strong> Start page of the WebCite service, proclaiming that new archiving request are currently not feasible anymore.</figcaption>
+
+<img src="images/WebCite-service-not-available-anymore-min.png" alt="Start page of the WebCite service, proclaiming that new archiving request are currently not feasible anymore."/>
+
+<figcaption>
+
+<strong>Figure 1:</strong> Start page of the WebCite service, proclaiming that new archiving request are currently not feasible anymore.
+
+</figcaption>
 </figure>
 
 Luckily with [Wayback Machine](https://web.archive.org/save)[^1], operated by the [Internet Archive](https://en.wikipedia.org/wiki/Internet_Archive), there is recently a new and reliable web service available. Although there is a [sophisticated how-to use](https://en.wikipedia.org/wiki/Help:Using_the_Wayback_Machine) of this service in the Wikipedia context, I have prepared my own [How-to use Wayback Machine for the general public](/slide/wayback-machine-tutorial/).
 
 <div class="notices info" >
+
 <p class="centered">
-Visit my slides on [How-to use Wayback Machine for the general public](/slides/2019-07-21-wayback-machine-tutorial/).
+
+Visit my slides on <a href="/slides/2019-07-21-wayback-machine-tutorial/"> How-to use Wayback Machine for the general public</a>.
+
 </div>
 
-<img src="images/wayback-machine-start-page-min.png" alt="Start page of the Wayback Machine, a service by the Internet Archive" class="border shadow" width="100%"/> <figcaption>**Figure 2:** Start page of the Wayback Machine, a service by the Internet Archive</figcaption>
+<img src="images/wayback-machine-start-page-min.png" alt="Start page of the Wayback Machine, a service by the Internet Archive" class="border shadow" width="100%"/>
+
+<figcaption>
+
+**Figure 2:** Start page of the Wayback Machine, a service by the Internet Archive
+
+</figcaption>
 
 ## How to cite archived resources?
 
@@ -60,42 +75,37 @@ Internet Archive asked the Modern Language Association (MLA) how to cite resourc
 
 MLA answered
 
-> that there is no established format for resources like the Wayback Machine, but it's best to err on the side of more information. You should cite the webpage as you would normally, and then give the Wayback Machine information.
+> that there is no established format for resources like the Wayback Machine, but it’s best to err on the side of more information. You should cite the webpage as you would normally, and then give the Wayback Machine information.
 
 MLA also provided an example:
 
-> McDonald, R. C. "Basic Canary Care." *Robirda Online*. 12 Sept. 2004. 18 Dec. 2006 \[<http://www.robirda.com/cancare.html>\]. *Internet Archive*. \[ <http://web.archive.org/web/20041009202820/http://www.robirda.com/cancare.html>\].
+> McDonald, R. C. “Basic Canary Care.” *Robirda Online*. 12 Sept. 2004. 18 Dec. 2006 `$$<http://www.robirda.com/cancare.html>$$`. *Internet Archive*. $$ <http://web.archive.org/web/20041009202820/http://www.robirda.com/cancare.html>$$.
 
 Note there are several additions to a standard bibliography:
 
 -   **Two dates:** The first is the date of the archive, then comes the date when the page is retrieved.
 -   **Two URLs:** The first is the original URL (not available anymore), then comes the archived URL from the Internet Archive.
--   **Web service:** Between the two URLs comes the 'second' author, the name of the internet service which archived the resource and generated its URL.
+-   **Web service:** Between the two URLs comes the ‘second’ author, the name of the internet service which archived the resource and generated its URL.
 
-According to MLA, both URLs shouldn't be underlined in the bibliography.
+According to MLA, both URLs shouldn’t be underlined in the bibliography.
 
-Let's try another example. The archiving service [Peeep.Us](http://peeep.us) is not available anymore. The Wayback Machine gives us as archived URL <https://web.archive.org/web/20180813205348/http://peeep.us:80/>. If we are are going to compose this bibliography in the usual way, we would get:
+Let’s try another example. The archiving service [Peeep.Us](http://peeep.us) is not available anymore. The Wayback Machine gives us as archived URL <https://web.archive.org/web/20180813205348/http://peeep.us:80/>. If we are are going to compose this bibliography in the usual way, we would get:
 
-> Nikolaev, Cyril. "Peeep.Us." Save Snapshot of a Web Page Forever!, 13 Aug. 2018, <https://web.archive.org/web/20180813205348/http://peeep.us:80/>.
+> Nikolaev, Cyril. “Peeep.Us.” Save Snapshot of a Web Page Forever!, 13 Aug. 2018, <https://web.archive.org/web/20180813205348/http://peeep.us:80/>.
 
 Using a name for web sites may questionable, but I use it whenever there is a reasonable possibility (e.g., from the Copyright or from the name of the institution, which produces the web site).
 
 Now we have to add the retrieval date, the original URL and the name of the archiving service:
 
-> Nikolaev, Cyril. "Peeep.Us." *Save Snapshot of a Web Page Forever!*, 13 Aug. 2018, 22 Jul. 2019 \[<http://peeep.us>\]. *Internet Archive*. \[<https://web.archive.org/web/20180813205348/http://peeep.us:80/>\].
+> Nikolaev, Cyril. “Peeep.Us.” *Save Snapshot of a Web Page Forever!*, 13 Aug. 2018, 22 Jul. 2019 `$$<http://peeep.us>$$`. *Internet Archive*. `$$<https://web.archive.org/web/20180813205348/http://peeep.us:80/>$$`.
 
 ## Wakelet
 
 In addition to the following [Wakelet](https://wakelet.com/), there is also a [community edition on my Wakelet homepage](https://wakelet.com/@PeterBaumgartner) where you can add relevant links.
 
 <iframe class="wakeletEmbed" width="100%" height="760px" src="https://embed.wakelet.com/wakes/ab838261-17e2-4603-b3c8-dc666064fe16/list" style="border: none" allow="autoplay">
-
 </iframe>
-
 <!-- Please only call https://embed-assets.wakelet.com/wakelet-embed.js once per page -->
-
 <script src="https://embed-assets.wakelet.com/wakelet-embed.js" charset="UTF-8"></script>
-
-<span class='Z3988' title='url_ver=Z39.88-2004&amp;ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fzotero.org%3A2&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc&amp;rft.type=blogPost&amp;rft.title=Archiving%20Quoted%20Web%20Resources&amp;rft.source=Thought%20splinters&amp;rft.rights=CC%20BY-SA%204.0&amp;rft.description=Quoting%20websites%20is%20a%20hassle%20for%20several%20reasons:%20Firstly,%20web%20pages%20are%20not%20available%20anymore.%20Secondly,%20web%20pages%20have%20moved%20so%20that%20the%20URL%20is%20not%20valid%20anymore.%20Thirdly,%20they%20change%20their%20content%20so%20that%20the%20cited%20reference%20is%20not%20correct%20anymore.%20This%20article%20presents%20some%20strategies%20and%20tools%20to%20bypass%20the%20challenges%20mentioned%20above.&amp;rft.identifier=https%3A%2F%2Fnotes.peter-baumgartner.net%2F2019%2F07%2F22%2Farchiving-quoted-web-resources&amp;rft.aufirst=Peter&amp;rft.aulast=Baumgartner&amp;rft.au=Peter%20Baumgartner&amp;rft.date=2019-07-22&amp;rft.language=en'></span>
 
 [^1]: To access this page you must be registered by [archive.org](https://archive.org/).

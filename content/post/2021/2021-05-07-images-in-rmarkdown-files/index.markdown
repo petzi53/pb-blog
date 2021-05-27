@@ -197,7 +197,7 @@ Here again -- as in the .md file -- we do not need to protect the shortcode. We 
 
 {{< figure src="images/my-image.png" class="center" alt="my-alt text" caption="Figure 4: my title-text" >}}
 
-Everything I said about the features of the figure shortcode in the post [Images: From R Markdown to HTML format](../images-from-rmd-to-html-format/#example-3) applies for `.md` and for .Rmarkdown files as well.
+Everything I said about the features of the figure shortcode in the post [Images: From R Markdown to HTML format](/2021/05/05/images-from-rmd-to-html-format/#example-3) applies for `.md` and for .Rmarkdown files as well.
 
 ### Summary
 
