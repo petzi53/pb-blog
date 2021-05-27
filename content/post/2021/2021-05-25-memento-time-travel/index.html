@@ -1,0 +1,424 @@
+---
+title: Memento Time Travel
+author: Peter Baumgartner
+date: '2021-05-25'
+slug: memento-time-travel
+categories:
+  - API
+  - open-science
+  - web-service
+tags:
+  - wayback machine
+  - web archive
+subtitle: 'Scraping Archived Data with the Wayback Machine'
+summary: Mementos are prior versions of web pages cached by web crawlers and stored in web archives. The post explains how to use the Wayback Machine to get back in time and retrieve prior states of a given web resource. 
+authors: []
+lastmod: ''
+featured: no
+commentable: yes
+side_toc: no
+draft: no
+image:
+  placement: 2
+  caption: 'Image by <a href="https://pixabay.com/users/mastertux-470906/">MasterTux</a> from <a href="https://pixabay.com/">Pixabay</a>'
+  alt_text: 'Lightning in the background with a big combination lock in the foreground. The picture is titled "Time Travel with Memento".'
+  focal_point: Center
+  preview_only: no
+  
+output:
+  blogdown::html_page:
+    fig_caption: true
+    toc: true
+    toc_depth: 4
+---
+
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+<script src="{{< blogdown/postref >}}index_files/core-js/shim.min.js"></script>
+<script src="{{< blogdown/postref >}}index_files/react/react.min.js"></script>
+<script src="{{< blogdown/postref >}}index_files/react/react-dom.min.js"></script>
+<script src="{{< blogdown/postref >}}index_files/reactwidget/react-tools.js"></script>
+<script src="{{< blogdown/postref >}}index_files/htmlwidgets/htmlwidgets.js"></script>
+<script src="{{< blogdown/postref >}}index_files/reactable-binding/reactable.js"></script>
+
+<div id="TOC">
+<ul>
+<li><a href="#research-with-archived-web-data">Research with archived web data</a></li>
+<li><a href="#how-does-the-memento-api-work">How does the Memento API work?</a></li>
+<li><a href="#where-to-find-the-desired-information">Where to find the desired information?</a>
+<ul>
+<li><a href="#contributed-packages">Contributed Packages</a></li>
+<li><a href="#packages-by-name">Packages By Name</a></li>
+<li><a href="#packages-by-date-of-publication">Packages By Date of Publication</a></li>
+</ul></li>
+<li><a href="#which-page-to-scrape">Which page to scrape?</a>
+<ul>
+<li><a href="#contributed-packages-1">Contributed Packages</a></li>
+<li><a href="#packages-by-name-1">Packages By Name</a></li>
+<li><a href="#packages-by-date-of-publication-1">Packages by Date of Publication</a></li>
+</ul></li>
+<li><a href="#memento-protocol-in-action">Memento protocol in action</a>
+<ul>
+<li><a href="#package-installation">Package installation</a></li>
+<li><a href="#mementos-link-types">Mementos Link Types</a></li>
+<li><a href="#memento-craw-list">Memento Craw List</a></li>
+</ul></li>
+<li><a href="#harvesting-web-pages">Harvesting Web Pages</a>
+<ul>
+<li><a href="#tidy-data">Tidy data</a></li>
+<li><a href="#get-number-of-available-packages">Get number of available packages</a></li>
+<li><a href="#visualizing-the-results">Visualizing the results</a></li>
+</ul></li>
+<li><a href="#summary">Summary</a></li>
+</ul>
+</div>
+
+<div id="research-with-archived-web-data" class="section level2">
+<h2>Research with archived web data</h2>
+<p>In a <a href="/2019/07/22/archiving-quoted-web-resources/">previous article</a>, I wrote about the possibilities of the <a href="https://archive.org/web/">Wayback Machine</a> for scientific writing. I argued that archiving web pages are essential for references as they prevent link rots when cited web resources are not available anymore. With this blog entry, I am looking into the reverse option: Finding and retrieving archived web pages for research reasons.</p>
+<p>Archived web pages as permanently stored data are indispensable for reproducibility issues. But they are also valuable research resources as they are data for historical and comparative research.</p>
+<p>This article rewrites my blog entry from 2019 on <a href="/2019/08/01/scraping-archived-data-with-the-wayback-machine">Scraping Archived Data with the Wayback Machine</a> in three aspects:</p>
+<ol style="list-style-type: decimal">
+<li>I am going into more detail to explain the Memento Protocol that stands behind the archiving procedures of the Internet Archive with the Wayback Machine.</li>
+<li>I will demonstrate the research significance of archived data with another — more simple — example. Instead, to analyze yearly differences in the ranking of the popularity of static site generators, I will focus on the number of statistical packages developed by the R community over time. The website structure for static site generators is complex, has changed several times, and contradicts the demonstration purpose.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></li>
+<li>To argue the importance of archived data convincingly, it is necessary to extract the URLs of archived data and use these data for research issues. Therefore, I will show how R can scrape web data and display the data for further analysis.</li>
+</ol>
+</div>
+<div id="how-does-the-memento-api-work" class="section level2">
+<h2>How does the Memento API work?</h2>
+<p>Mementos are prior versions of web pages cached by web crawlers and stored in web archives. The HTTP-based Memento framework is a <a href="https://mementoweb.org/guide/rfc/">description for Time-Based Access to Resource States</a>.</p>
+<p>With Mementos, you can access a version of a Web resource as it existed at some date in the past. The complete information about the <a href="http://mementoweb.org/about/">Memento Project</a> is specified in RFC 7089 as <a href="http://mementoweb.org/guide/rfc/">HTTP Framework for Time-Based Access to Resource States – Memento</a>. I will explain the essential idea with the gentle <a href="http://mementoweb.org/guide/quick-intro/">non-technical introduction</a> on the Memento website.</p>
+<p>In the Memento protocol there are four important components:</p>
+<p><img src="images/originalresource-min.png" alt="Logo Original Resource" class="inline-icon" height="64" width="64"/><strong>Original Resource (URI-R)</strong>: A Web resource that exists or used to exist on the live Web for which we want to find a prior version.</p>
+<p><img src="images/mementoresource-min.png" alt="Logo Memento Resource" class="inline-icon" height="64" width="64"/><strong>Memento (URI-M)</strong>: A Web resource that is a prior version of the Original Resource. Prior versions are Web resources encapsulated in what the Original Resource was like at some time in the past.</p>
+<p><img src="images/timegateresource-min.png" alt="Logo Timegate Resource" class="inline-icon" height="64" width="64"/><strong>TimeGate (URI-G)</strong>: A Web resource that “decides” on the basis of a given datetime, which Memento best matches what the Original Resource was like around that given datetime.</p>
+<p><img src="images/timemapresource-min.png" alt="Logo Timemap Resource" class="inline-icon" height="64" width="64"/><strong>TimeMap (URI-T)</strong>: A list of URIs of Mementos of the Original Resource that is archived, e.g., available online.</p>
+<p>The central component is the TimeMap Resource. It is a machine-readable document that lists the Original Resource itself, its TimeGate, and its Mementos, as well as associated metadata such as archival DateTime for Mementos.</p>
+<blockquote>
+<p>The HTTP-based Memento framework bridges the present and past Web. It facilitates obtaining representations of prior states of a given resource by introducing datetime negotiation and TimeMaps. Datetime negotiation is a variation on content negotiation that leverages the given resource’s URI and a user agent’s preferred datetime. TimeMaps are lists that enumerate URIs of resources that encapsulate prior states of the given resource. (Quoted from <a href="http://mementoweb.org/guide/rfc/">RFC 7089</a>)</p>
+</blockquote>
+{{< figure src="images/timemap-min.png" id="memento-timemap" alt="All four elements of the Memento framework (represented as round icons ) linked together." title="Architectural overview of how the Memento framework supports batch discovery of prior/archived versions of a resource (Mementos)." caption="Architectural overview of how the Memento framework supports batch discovery of prior/archived versions of a resource (Mementos)." numbered="true" >}}
+</div>
+<div id="where-to-find-the-desired-information" class="section level2">
+<h2>Where to find the desired information?</h2>
+<p>To demonstrate the interplay of the Memento protocol with the Wayback Machine, I will look into the history of the R project web page. I want to know the number of available packages over time.</p>
+<p>There are three web pages where I can find out the number of available packages:</p>
+<div id="contributed-packages" class="section level3">
+<h3>Contributed Packages</h3>
+<p><a href="https://cran.r-project.org/web/packages/index.html">Contributed Packages</a>: On this page is the number of available packages written directly under the subheading “Available Packages”.</p>
+{{< figure src="images/a1-number-of-packages-min.png" id="pkgs-number-1" alt="Screenshot displays webpage 'Contributed Packages' of the R-project with the number of available packages (= 17648) highlighted." title="Page 'Contributed Packages' mentions the number of available packages." caption="Page 'Contributed Packages' mentions the number of available packages." width="100%" numbered="true">}}
+</div>
+<div id="packages-by-name" class="section level3">
+<h3>Packages By Name</h3>
+<p><a href="https://cran.r-project.org/web/packages/available_packages_by_name.html">Available CRAN Packages By Name</a>: This page list all packages alphabetically. One could count the lines with the package’s name to get the desired number.</p>
+{{< figure src="images/a2-name-number-of-packages-min.png" id="pkgs-number-2" alt="Screenshot displays web page 'Available CRAN Packages By Name'." title="Screenshot of the web page 'Available CRAN Packages By Name'." caption="Screenshot of the web page 'Available CRAN Packages By Name'." width="100%" numbered="true">}}
+</div>
+<div id="packages-by-date-of-publication" class="section level3">
+<h3>Packages By Date of Publication</h3>
+<p><a href="https://cran.r-project.org/web/packages/available_packages_by_date.html">Available CRAN Packages By Date of Publication</a>: This page list all packages by date of publication. Here one could also count the lines with the package’s dates to get the desired number.</p>
+{{< figure src="images/a3-date-number-of-packages-min.png" id="pkgs-number-3" alt="Screenshot displays web page 'Available CRAN Packages By Date of Publication'." title="Screenshot of the web page 'Available CRAN Packages By Date of Publication'." caption="Screenshot of the web page 'Available CRAN Packages By Date of Publication'." width="100%" numbered="true">}}
+</div>
+</div>
+<div id="which-page-to-scrape" class="section level2">
+<h2>Which page to scrape?</h2>
+<p>The question now arises if these pages are also available in the past. And if so: Have they the same structure to use the identical CSS selector in all archived instances?</p>
+<p>The question now arises if this page is available also in the past. And if so: Has it the same structure to use the identical CSS selector in all prior archived instances?</p>
+<div id="contributed-packages-1" class="section level3">
+<h3>Contributed Packages</h3>
+<p>It turns out that the first line after the subheading could be scraped with the CSS selector <code>#pkgs + p</code>.</p>
+{{< figure src="images/Prepraring-Code-Inspector-min.png" id="code-inspector-1" alt="Screenshot displays web page 'Contributed Packages' of the R-project with opened context menue to select the code inspector." title="Context menue via right clicke opened to select the code inspector." caption="Context menue via right clicke opened to select the code inspector." width="100%" numbered="true">}}
+{{< figure src="images/CSS-selector-number-of-packages-min.png" id="css-selector-1" alt="Screenshot of the web page 'Contributed Packages' opened by the code inspector displays CSS selector 'h3#pgks' with a magnifier glass." title="Code inspector detects CSS selector 'h3#pgks' and displays this result with a magnifier glass." caption="Code inspector detects CSS selector 'h3#pgks' and displays this result with a magnifier glass." width="100%" numbered="true">}}
+<p>To check if the website structure for the paragraph after the header with id = “pkgs” remains constant, we can use the browser plugin for the Wayback Machine (available for <a href="https://chrome.google.com/webstore/detail/wayback-machine/fpnmgdkabkmnadcjpehmlllkndpkmiak?hl=en&amp;gl=US">Google Chrome</a> and <a href="https://addons.mozilla.org/en-US/firefox/addon/wayback-machine_new/">Firefox.</a>).</p>
+{{< figure src="images/01-wayback-machine-plugin-commented-min.png" id="wayback-plugin-1" alt="Screenshot displays webpage 'Contributed Packages' of the R-project with opened browser plugin of the Wayback Machine." title="Browser Plugin Wayback Machine" caption="Browser Plugin Wayback Machine" width="100%" numbered="true">}}
+<p>If you click on the Wayback Machine plugin, you can either go directly to the first or last (recent) snapshot of this web page. I choose “Overview” to display the calendar to inspect different instances of the archived page.</p>
+{{< figure src="images/02-wayback-machine-plugin-commented-min.png" id="wayback-plugin-2" alt="Screenshot of the Wayback Machine calender displays the time span and the distribution of the archived page over time." title="The calender displays time span and distribution of the archived page." caption="The calender displays time span and distribution of the archived page." width="100%" numbered="true">}}
+<p>The calendar shows that the page was between May 14, 2008, and April 13, 2021, 145 times archived. From this overview page, one can select different instances and content and design of the ‘Contributed Packages’ page. To get an idea of possible changes in the structure, I start with the first instance of the archived page.</p>
+<p>{{% callout note %}} The number of times the page was crawled by the Wayback Machine (in my example: 145) has nothing to do with how often the page was updated. {{% /callout %}}</p>
+{{< figure src="images/03-wayback-machine-plugin-commented-min.png" id="wayback-plugin-3" alt="Screenshot of the 'Contributed Package' page from May 14, 2008." title="Screenshot of the 'Contributed Package' page from May 14, 2008." caption="Screenshot of the 'Contributed Package' page from May 14, 2008." width="100%" numbered="true">}}
+<p>The archived page displays a different layout. The number of packages is not immediately after the first heading but after several paragraphs later (see number 2 in the image). Also, the name of the heading has changed from “Available Packages” to “Available Bundles and Packages”. But more importantly: The paragraph following immediately of this header mentions the amounts of different kinds of packages and bundles. It would be challenging to detect the desired number (in this case, 1425 packages) programmatically.</p>
+<p>A further inspection shows that the id still remains “pkgs”. But because of the different text of the first paragraph, I want to look at another page to grab my desired information easier.</p>
+</div>
+<div id="packages-by-name-1" class="section level3">
+<h3>Packages By Name</h3>
+<p>Here I will demonstrate the use of a helpful tool. The <a href="https://rvest.tidyverse.org/articles/rvest.html">Web scraping 101 vignettes</a> of the <code>rvest</code> package references <a href="https://rvest.tidyverse.org/articles/articles/selectorgadget.html">SelectgorGadget</a>, a JavaScript bookmarklet to find out the required CSS selector interactively.</p>
+{{< figure src="images/selected-packages-by-name-1-min.png" id="selector-gadget-1" alt="Screenshot of the 'Packages By Name' page with the SelectorGadget activated and selecting the first name," title="SelectorGadget selects the first name." caption="SelectorGadget selects the first name." width="100%" numbered="true">}}
+<p>After selecting the first name, the SelectorGadget shows the CSS selector a, referring to all hyperlinks of this page. At the bottom, you can see that there are 17674 hyperlinks on this page. The problem is that the headline consists of the letters of the alphabet, which also are hyperlinks.</p>
+{{< figure src="images/selected-packages-by-name-2-min.png" id="selector-gadget-2" alt="Screenshot of the 'Packages By Name' page with the SelectorGadget activated and selecting the first letter of the alphabet." title="SelectorGadget selects the first letter of the alphabet." caption="SelectorGadget selects the first letter of the alphabet." width="100%" numbered="true">}}
+<p>To select another position on the page with the SelectorGadget, subtracts these selected items. The bottom line shows the CSS selector with ‘td a’ (table data followed by a hyperlink) and removes the 26 characters to get 17648 selected objects. So this would be an easy way to get the number of available R packages.</p>
+<p>The first archived page starts with September 24, 2011, and reduces, therefore, our survey period. But more important: From the 193 archived pages (more than the 145 instances of the ‘Contributed Package’ page!) are many redirects.</p>
+{{< figure src="images/redirects-min.png" id="redirects" alt="Screenshot of the Calendar view displaying dates with blue and green filled circles of different sizes. Red arrows point to all green circles." title="Calender view with many green cicled dates (=redirects)." caption="Calender view with many green cicled dates (=redirects)." width="100%" numbered="true">}}
+<p>The size of the circles displays the number of pages crawled. Blue is directly archived, green is an archived page after a redirect. I could not find a solution to distinguish the difference between direct archiving and after a redirect programmatically. The problem with a redirect is that the same state of a page is archived several times but counts as different pages in time. This pollutes the resulting data set.</p>
+</div>
+<div id="packages-by-date-of-publication-1" class="section level3">
+<h3>Packages by Date of Publication</h3>
+<p>Finally, I decided to scrape the page “Packages by Date of Publication” with the simple CSS selector ‘a’. It has the same period as the “Package By Name” page (the first instance is from September 26, 2011). It was archived only 81 times but with very few redirects.</p>
+{{< figure src="images/overview-date-commented-min.png" id="overview-date" alt="Screenshot of the Calendar view of the 'Packages by Date of Publication' page." title="Calendar view of the 'Packages by Date of Publication' page." caption="Calendar view of the 'Packages by Date of Publication' page." width="100%" numbered="true">}}
+</div>
+</div>
+<div id="memento-protocol-in-action" class="section level2">
+<h2>Memento protocol in action</h2>
+<div id="package-installation" class="section level3">
+<h3>Package installation</h3>
+<p>At first, we have to install and load the <a href="https://github.com/hrbrmstr/wayback">wayback package</a>, a wonderful and very practical library of Memento API wrappers, written by <a href="https://rud.is/">Bob Rudis</a>.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
+<p>{{% callout warning %}} In the meanwhile there exists <a href="https://cran.r-project.org/web/packages/wayback/index.html">another package with the same name on CRAN</a> (Comprehensive R Archive Network). It is dedicated to the installation for legacy R versions and has nothing to do with the wayback package on GitHub for the Wayback Machine of the Internet Archive. {{% /callout %}}</p>
+<pre class="r"><code>if (!require(&quot;wayback&quot;))
+        {remotes::install_github(&quot;hrbrmstr/wayback&quot;, build_vignettes = TRUE)
+        library(wayback)}</code></pre>
+<pre><code>## Loading required package: wayback</code></pre>
+</div>
+<div id="mementos-link-types" class="section level3">
+<h3>Mementos Link Types</h3>
+<p>The next step is to use the <code>get_mementos()</code> function. With <code>get_mementos(url, timestamp = format(Sys.Date(), "%Y"))</code> we will receive a shortlist of relevant links to the archived content. Only the first parameter, <code>url</code>, is mandatory. If no timestamp is provided, then the actual year is taken, and the most recent archived page will be the endpoint, which in our case is ok. The function will return the 4 link relation types as in the <a href="https://mementoweb.org/guide/rfc/#Link-Header-Relation-Types">Request for Comment for the Memento framework</a> described and <a href="#how-does-the-memento-api-work">outlined above</a>.</p>
+<ol style="list-style-type: decimal">
+<li>Link Relation Type “original.”</li>
+<li>Link Relation Type “timemap.”</li>
+<li>Link Relation Type “timegate.”</li>
+<li>Link Relation Type “memento.”</li>
+</ol>
+<pre class="r"><code>url = &quot;https://cran.r-project.org/web/packages/available_packages_by_date.html&quot;
+cran_link_types &lt;- wayback::get_mementos(url)
+saveRDS(cran_link_types, &quot;data/cran_link_types.rds&quot;)</code></pre>
+<pre class="r"><code>cran_link_types &lt;- readRDS(&quot;data/cran_link_types.rds&quot;)
+knitr::kable(cran_link_types, 
+             caption = &quot;Memento Link Types&quot;, 
+             label=&quot;memento-link-types&quot;, 
+             format = &quot;html&quot;)</code></pre>
+<table>
+<caption>
+<span id="tab:memento-link-types">Table 1: </span>Memento Link Types
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+link
+</th>
+<th style="text-align:left;">
+rel
+</th>
+<th style="text-align:left;">
+ts
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="https://cran.r-project.org/web/packages/available_packages_by_date.html" class="uri">https://cran.r-project.org/web/packages/available_packages_by_date.html</a>
+</td>
+<td style="text-align:left;">
+original
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="http://web.archive.org/web/timemap/link/https://cran.r-project.org/web/packages/available_packages_by_date.html" class="uri">http://web.archive.org/web/timemap/link/https://cran.r-project.org/web/packages/available_packages_by_date.html</a>
+</td>
+<td style="text-align:left;">
+timemap
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="http://web.archive.org/web/https://cran.r-project.org/web/packages/available_packages_by_date.html" class="uri">http://web.archive.org/web/https://cran.r-project.org/web/packages/available_packages_by_date.html</a>
+</td>
+<td style="text-align:left;">
+timegate
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="http://web.archive.org/web/20110926172444/http://cran.r-project.org:80/web/packages/available_packages_by_date.html" class="uri">http://web.archive.org/web/20110926172444/http://cran.r-project.org:80/web/packages/available_packages_by_date.html</a>
+</td>
+<td style="text-align:left;">
+first memento
+</td>
+<td style="text-align:left;">
+2011-09-26 17:24:44
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="http://web.archive.org/web/20210128201734/https://cran.r-project.org/web/packages/available_packages_by_date.html" class="uri">http://web.archive.org/web/20210128201734/https://cran.r-project.org/web/packages/available_packages_by_date.html</a>
+</td>
+<td style="text-align:left;">
+prev memento
+</td>
+<td style="text-align:left;">
+2021-01-28 20:17:34
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="http://web.archive.org/web/20210130222751/https://cran.r-project.org/web/packages/available_packages_by_date.html" class="uri">http://web.archive.org/web/20210130222751/https://cran.r-project.org/web/packages/available_packages_by_date.html</a>
+</td>
+<td style="text-align:left;">
+memento
+</td>
+<td style="text-align:left;">
+2021-01-30 22:27:51
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="http://web.archive.org/web/20210412212953/http://cran.r-project.org/web/packages/available_packages_by_date.html" class="uri">http://web.archive.org/web/20210412212953/http://cran.r-project.org/web/packages/available_packages_by_date.html</a>
+</td>
+<td style="text-align:left;">
+next memento
+</td>
+<td style="text-align:left;">
+2021-04-12 21:29:53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="http://web.archive.org/web/20210412212953/http://cran.r-project.org/web/packages/available_packages_by_date.html" class="uri">http://web.archive.org/web/20210412212953/http://cran.r-project.org/web/packages/available_packages_by_date.html</a>
+</td>
+<td style="text-align:left;">
+last memento
+</td>
+<td style="text-align:left;">
+2021-04-12 21:29:53
+</td>
+</tr>
+</tbody>
+</table>
+<p>Besides these 4 main types of link relations, the function also provides the first, previous, next, and last available memento. When no particular date is given, then the last memento is identical with the next (= nearest) memento. In addition to the two columns, <code>link</code> and <code>rel</code>, there is a third one, <code>ts</code>, containing the timestamps (empty for the first 3 link relation types). The return value in total is a tibble with eight observations (rows) and three columns.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
+</div>
+<div id="memento-craw-list" class="section level3">
+<h3>Memento Craw List</h3>
+<p>Providing an URL in the search field of the Wayback Machine results in the interactive browser version to the <a href="https://web.archive.org/web/*/https://cran.r-project.org/web/packages/available_packages_by_date.html">calendar view</a> as shown by <a href="#figure-redirects">Figure 12</a> and <a href="#figure-overview-date">Figure 13</a>. The dates with archived content are blue or green (= redirected URL) circles. The bigger the circles, the more snapshots were archived on these dates.</p>
+<p>We get these dated crawl lists with the <code>get_timemap()</code> function using the second observation of the result of the <code>get_mementos</code> function. This is in our case <code>cran_link_types$link[2]</code>.</p>
+<p>The execution of the following code chunk can take some time, depending on how many pages of the URL are archived. Be aware that the Wayback server is strained by this query, so do not repeat this operation. I store the result on my hard disk and will use the saved data for further processing.</p>
+<pre class="r"><code>cran_link_types &lt;- readRDS(&quot;data/cran_link_types.rds&quot;)
+cran_crawl_list &lt;- wayback::get_timemap(cran_link_types$link[2])
+saveRDS(cran_crawl_list, &quot;data/cran_crawl_list.rds&quot;)</code></pre>
+<pre class="r"><code>cran_crawl_list &lt;- readRDS(&quot;data/cran_crawl_list.rds&quot;)
+reactable::reactable(
+    cran_crawl_list,
+    pagination = FALSE, 
+    highlight = TRUE, 
+    height = 500,
+    compact = TRUE,
+    bordered = TRUE,
+    striped = TRUE,
+    wrap = FALSE,
+    resizable = TRUE
+    )</code></pre>
+<div id="htmlwidget-1" class="reactable html-widget" style="width:auto;height:500px;"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"rel":["original","self","timegate","first memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento","memento",null],"link":["http://cran.r-project.org:80/web/packages/available_packages_by_date.html","http://web.archive.org/web/timemap/link/https://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/https://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20110926172444/http://cran.r-project.org:80/web/packages/available_packages_by_date.html","http://web.archive.org/web/20111011161922/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20111029143255/http://cran.r-project.org:80/web/packages/available_packages_by_date.html","http://web.archive.org/web/20111129090224/http://cran.r-project.org:80/web/packages/available_packages_by_date.html","http://web.archive.org/web/20111229185139/http://cran.r-project.org:80/web/packages/available_packages_by_date.html","http://web.archive.org/web/20120127155954/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20120129075828/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20120131132715/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20120201062129/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20120204192521/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20120205083817/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20120206022428/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20120209094336/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20120210103715/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20120211124655/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20120212110843/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20120214054442/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20120215111133/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20120216125759/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20120217182603/http://cran.r-project.org:80/web/packages/available_packages_by_date.html","http://web.archive.org/web/20120218141610/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20120219110605/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20120222164345/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20120223125953/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20120223235519/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20120226101038/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20120229073641/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20120301015135/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20120304105604/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20120610025720/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20120614085234/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20121113203736/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20130121072548/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20130323095934/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20130329132608/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20130404053202/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20130512232217/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20130821023335/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20140402061423/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20140924134100/http://cran.r-project.org:80/web/packages/available_packages_by_date.html","http://web.archive.org/web/20141008164129/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20150124092856/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20150524002214/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20150906023756/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20160104062049/https://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20160310103316/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20160325202321/https://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20160329083804/https://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20160409205215/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20160416060120/https://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20161013225025/https://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20161106042616/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20161201082429/http://cran.r-project.org:80/web/packages/available_packages_by_date.html","http://web.archive.org/web/20170502002538/http://cran.r-project.org:80/web/packages/available_packages_by_date.html","http://web.archive.org/web/20170704162625/https://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20170821101153/http://cran.r-project.org:80/web/packages/available_packages_by_date.html","http://web.archive.org/web/20171024072928/http://cran.r-project.org:80/web/packages/available_packages_by_date.html","http://web.archive.org/web/20171116014206/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20171224190220/http://cran.r-project.org:80/web/packages/available_packages_by_date.html","http://web.archive.org/web/20180822083144/https://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20190103070122/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20190108153927/http://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20190125012007/https://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20190331233000/https://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20190401204604/https://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20190402201759/https://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20190407075624/https://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20191023085236/http://cran.r-project.org:80/web/packages/available_packages_by_date.html","http://web.archive.org/web/20191120111214/https://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20191222170216/http://cran.r-project.org:80/web/packages/available_packages_by_date.html","http://web.archive.org/web/20200103222850/https://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20200220224638/http://cran.r-project.org:80/web/packages/available_packages_by_date.html","http://web.archive.org/web/20200508124724/https://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20200508124731/https://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20200525194558/https://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20200711161834/https://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20200719031416/http://cran.r-project.org:80/web/packages/available_packages_by_date.html","http://web.archive.org/web/20201112015705/https://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20210128201734/https://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20210130222751/https://cran.r-project.org/web/packages/available_packages_by_date.html","http://web.archive.org/web/20210412212953/http://cran.r-project.org/web/packages/available_packages_by_date.html",""],"type":[null,"application/link-format",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"from":[null,"Mon, 26 Sep 2011 17:24:44 GMT",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"datetime":[null,null,null,"Mon, 26 Sep 2011 17:24:44 GMT","Tue, 11 Oct 2011 16:19:22 GMT","Sat, 29 Oct 2011 14:32:55 GMT","Tue, 29 Nov 2011 09:02:24 GMT","Thu, 29 Dec 2011 18:51:39 GMT","Fri, 27 Jan 2012 15:59:54 GMT","Sun, 29 Jan 2012 07:58:28 GMT","Tue, 31 Jan 2012 13:27:15 GMT","Wed, 01 Feb 2012 06:21:29 GMT","Sat, 04 Feb 2012 19:25:21 GMT","Sun, 05 Feb 2012 08:38:17 GMT","Mon, 06 Feb 2012 02:24:28 GMT","Thu, 09 Feb 2012 09:43:36 GMT","Fri, 10 Feb 2012 10:37:15 GMT","Sat, 11 Feb 2012 12:46:55 GMT","Sun, 12 Feb 2012 11:08:43 GMT","Tue, 14 Feb 2012 05:44:42 GMT","Wed, 15 Feb 2012 11:11:33 GMT","Thu, 16 Feb 2012 12:57:59 GMT","Fri, 17 Feb 2012 18:26:03 GMT","Sat, 18 Feb 2012 14:16:10 GMT","Sun, 19 Feb 2012 11:06:05 GMT","Wed, 22 Feb 2012 16:43:45 GMT","Thu, 23 Feb 2012 12:59:53 GMT","Thu, 23 Feb 2012 23:55:19 GMT","Sun, 26 Feb 2012 10:10:38 GMT","Wed, 29 Feb 2012 07:36:41 GMT","Thu, 01 Mar 2012 01:51:35 GMT","Sun, 04 Mar 2012 10:56:04 GMT","Sun, 10 Jun 2012 02:57:20 GMT","Thu, 14 Jun 2012 08:52:34 GMT","Tue, 13 Nov 2012 20:37:36 GMT","Mon, 21 Jan 2013 07:25:48 GMT","Sat, 23 Mar 2013 09:59:34 GMT","Fri, 29 Mar 2013 13:26:08 GMT","Thu, 04 Apr 2013 05:32:02 GMT","Sun, 12 May 2013 23:22:17 GMT","Wed, 21 Aug 2013 02:33:35 GMT","Wed, 02 Apr 2014 06:14:23 GMT","Wed, 24 Sep 2014 13:41:00 GMT","Wed, 08 Oct 2014 16:41:29 GMT","Sat, 24 Jan 2015 09:28:56 GMT","Sun, 24 May 2015 00:22:14 GMT","Sun, 06 Sep 2015 02:37:56 GMT","Mon, 04 Jan 2016 06:20:49 GMT","Thu, 10 Mar 2016 10:33:16 GMT","Fri, 25 Mar 2016 20:23:21 GMT","Tue, 29 Mar 2016 08:38:04 GMT","Sat, 09 Apr 2016 20:52:15 GMT","Sat, 16 Apr 2016 06:01:20 GMT","Thu, 13 Oct 2016 22:50:25 GMT","Sun, 06 Nov 2016 04:26:16 GMT","Thu, 01 Dec 2016 08:24:29 GMT","Tue, 02 May 2017 00:25:38 GMT","Tue, 04 Jul 2017 16:26:25 GMT","Mon, 21 Aug 2017 10:11:53 GMT","Tue, 24 Oct 2017 07:29:28 GMT","Thu, 16 Nov 2017 01:42:06 GMT","Sun, 24 Dec 2017 19:02:20 GMT","Wed, 22 Aug 2018 08:31:44 GMT","Thu, 03 Jan 2019 07:01:22 GMT","Tue, 08 Jan 2019 15:39:27 GMT","Fri, 25 Jan 2019 01:20:07 GMT","Sun, 31 Mar 2019 23:30:00 GMT","Mon, 01 Apr 2019 20:46:04 GMT","Tue, 02 Apr 2019 20:17:59 GMT","Sun, 07 Apr 2019 07:56:24 GMT","Wed, 23 Oct 2019 08:52:36 GMT","Wed, 20 Nov 2019 11:12:14 GMT","Sun, 22 Dec 2019 17:02:16 GMT","Fri, 03 Jan 2020 22:28:50 GMT","Thu, 20 Feb 2020 22:46:38 GMT","Fri, 08 May 2020 12:47:24 GMT","Fri, 08 May 2020 12:47:31 GMT","Mon, 25 May 2020 19:45:58 GMT","Sat, 11 Jul 2020 16:18:34 GMT","Sun, 19 Jul 2020 03:14:16 GMT","Thu, 12 Nov 2020 01:57:05 GMT","Thu, 28 Jan 2021 20:17:34 GMT","Sat, 30 Jan 2021 22:27:51 GMT","Mon, 12 Apr 2021 21:29:53 GMT",null]},"columns":[{"accessor":"rel","name":"rel","type":"character"},{"accessor":"link","name":"link","type":"character"},{"accessor":"type","name":"type","type":"character"},{"accessor":"from","name":"from","type":"character"},{"accessor":"datetime","name":"datetime","type":"character"}],"resizable":true,"defaultPageSize":85,"paginationType":"numbers","showPageInfo":true,"minRows":1,"highlight":true,"bordered":true,"striped":true,"compact":true,"nowrap":true,"height":"500px","dataKey":"08911f27651065abbd474bd57fd3d210","key":"08911f27651065abbd474bd57fd3d210"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<p>We get a table with 85 rows, where the first three rows are not relevant for our purpose, and the last row is empty. So we get 85 - 3 - 1 = 81 mementos, which conforms to the number of <a href="#figure-overview-date">Figure 13</a>. The URLs to the mementos are pretty long. You can widen/narrow the columns to inspect the structure of the URLs. Typically they start with “<a href="http://web.archive.org/web/" class="uri">http://web.archive.org/web/</a>” followed by the date-time string of the memento and the original URL.</p>
+</div>
+</div>
+<div id="harvesting-web-pages" class="section level2">
+<h2>Harvesting Web Pages</h2>
+<p>We have now collected all the URLs for the mementos. The next task is now getting our data from these pages and display them in a graphic. For this last step, we will use the packages <code>rvest</code> and <code>ggplot2</code>. It is a “standard” task of manipulating HTML and has only insofar with the memento framework to do, as we are using the URLs of the archived web pages.</p>
+<div id="tidy-data" class="section level3">
+<h3>Tidy data</h3>
+<p>We only need the memento links, date, and new column for our number of available packages.</p>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.3.3     ✓ purrr   0.3.4
+## ✓ tibble  3.1.2     ✓ dplyr   1.0.6
+## ✓ tidyr   1.1.3     ✓ stringr 1.4.0
+## ✓ readr   1.4.0     ✓ forcats 0.5.1</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>cran_tidy_data &lt;- readRDS(&quot;data/cran_crawl_list.rds&quot;) %&gt;% 
+  filter(stringr::str_detect(rel, &quot;memento&quot;)) %&gt;% 
+  mutate(date = anytime::anydate(datetime)) %&gt;% 
+  add_column(pkgs = 0) %&gt;% 
+  select(link, date, pkgs)
+saveRDS(cran_tidy_data, &quot;data/cran_tidy_data.rds&quot;)
+
+glimpse(cran_tidy_data)</code></pre>
+<pre><code>## Rows: 81
+## Columns: 3
+## $ link &lt;chr&gt; &quot;http://web.archive.org/web/20110926172444/http://cran.r-project.…
+## $ date &lt;date&gt; 2011-09-26, 2011-10-11, 2011-10-29, 2011-11-29, 2011-12-29, 2012…
+## $ pkgs &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…</code></pre>
+<p>For the purpose of this demonstration, I do not want to scrape every one of the 81 links but only one link per year. As the archiving dates do not have a systematic regularity, we cannot provide time series, say January 1st every year. But this does not matter for this demo.</p>
+<pre class="r"><code>cran_yearly_links &lt;- readRDS(&quot;data/cran_tidy_data.rds&quot;) %&gt;% 
+  dplyr::mutate(year = lubridate::year(date), .after = &quot;date&quot;)  
+
+cran_yearly_links &lt;- cran_yearly_links[!duplicated(cran_yearly_links[ , &quot;year&quot;]), ]
+saveRDS(cran_yearly_links, &quot;data/cran_yearly_links.rds&quot;)
+cran_yearly_links</code></pre>
+<pre><code>## # A tibble: 11 x 4
+##    link                                                   date        year  pkgs
+##    &lt;chr&gt;                                                  &lt;date&gt;     &lt;dbl&gt; &lt;dbl&gt;
+##  1 http://web.archive.org/web/20110926172444/http://cran… 2011-09-26  2011     0
+##  2 http://web.archive.org/web/20120127155954/http://cran… 2012-01-27  2012     0
+##  3 http://web.archive.org/web/20130121072548/http://cran… 2013-01-21  2013     0
+##  4 http://web.archive.org/web/20140402061423/http://cran… 2014-04-02  2014     0
+##  5 http://web.archive.org/web/20150124092856/http://cran… 2015-01-24  2015     0
+##  6 http://web.archive.org/web/20160104062049/https://cra… 2016-01-04  2016     0
+##  7 http://web.archive.org/web/20170502002538/http://cran… 2017-05-02  2017     0
+##  8 http://web.archive.org/web/20180822083144/https://cra… 2018-08-22  2018     0
+##  9 http://web.archive.org/web/20190103070122/http://cran… 2019-01-03  2019     0
+## 10 http://web.archive.org/web/20200103222850/https://cra… 2020-01-03  2020     0
+## 11 http://web.archive.org/web/20210128201734/https://cra… 2021-01-28  2021     0</code></pre>
+</div>
+<div id="get-number-of-available-packages" class="section level3">
+<h3>Get number of available packages</h3>
+<p>Although there are only 10 web pages to scrape, this will still take some time. Therefore I provide a progress indicator to monitor how much time the procedure will still last.</p>
+<pre class="r"><code>library(rvest)
+
+cran_pkgs &lt;- readRDS(&quot;data/cran_yearly_links.rds&quot;)
+max = nrow(cran_pkgs)
+
+pb &lt;- txtProgressBar(min = 0, max = max, style = 3)
+  for(i in 1:max) {
+      html &lt;- read_html(cran_pkgs$link[i])
+      links &lt;- html_nodes(html, &quot;a&quot;)
+      cran_pkgs$pkgs[i] &lt;- length(links)
+    setTxtProgressBar(pb, i)
+    }
+close(pb)
+saveRDS(cran_pkgs, &quot;data/cran_pkgs.rds&quot;)</code></pre>
+<pre class="r"><code>(avail_pkgs &lt;- readRDS(&quot;data/cran_pkgs.rds&quot;))</code></pre>
+<pre><code>## # A tibble: 11 x 4
+##    link                                                   date        year  pkgs
+##    &lt;chr&gt;                                                  &lt;date&gt;     &lt;dbl&gt; &lt;dbl&gt;
+##  1 http://web.archive.org/web/20110926172444/http://cran… 2011-09-26  2011  3307
+##  2 http://web.archive.org/web/20120127155954/http://cran… 2012-01-27  2012  3563
+##  3 http://web.archive.org/web/20130121072548/http://cran… 2013-01-21  2013  4262
+##  4 http://web.archive.org/web/20140402061423/http://cran… 2014-04-02  2014  5374
+##  5 http://web.archive.org/web/20150124092856/http://cran… 2015-01-24  2015  6221
+##  6 http://web.archive.org/web/20160104062049/https://cra… 2016-01-04  2016  7722
+##  7 http://web.archive.org/web/20170502002538/http://cran… 2017-05-02  2017 10513
+##  8 http://web.archive.org/web/20180822083144/https://cra… 2018-08-22  2018 12938
+##  9 http://web.archive.org/web/20190103070122/http://cran… 2019-01-03  2019 13645
+## 10 http://web.archive.org/web/20200103222850/https://cra… 2020-01-03  2020 15348
+## 11 http://web.archive.org/web/20210128201734/https://cra… 2021-01-28  2021 17038</code></pre>
+</div>
+<div id="visualizing-the-results" class="section level3">
+<h3>Visualizing the results</h3>
+<p>I am not going to produce a sophisticated graphic. A simple line graph to see how the number of packages is increasing has to be enough.</p>
+<pre class="r"><code>p &lt;- readRDS(&quot;data/cran_pkgs.rds&quot;) %&gt;% 
+  ggplot(aes(year, pkgs, group = 1)) +
+  geom_line()
+p</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/plot-pkgs-numbers-1.png" width="672" /></p>
+</div>
+</div>
+<div id="summary" class="section level2">
+<h2>Summary</h2>
+<p>In this post, I have presented the memento protocol, a framework to generate and retrieve prior versions of web pages cached by web crawlers and stored in web archives. I have explained how to Memento API for the Wayback Machine of the Internet Archive is working. With the <code>wayback</code> packages by Bob Rudis, I have demonstrated the practical handling to use the framework for retrieving, collecting, and displaying historical data.</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Recently, even the URL has changed from <a href="https://www.staticgen.com/" class="uri">https://www.staticgen.com/</a> to <a href="https://jamstack.org/generators/." class="uri">https://jamstack.org/generators/.</a><a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>I have forked his GitHub repo and looked into his R scripts. I have to say that I became somewhat depressed as I noticed how much knowledge I am still lacking. Despite working now for four years with R, there are so many think I still have to learn!<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>In many cases, the last memento is identical with the memento link relation type. Then the tibble has only seven rows.<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
