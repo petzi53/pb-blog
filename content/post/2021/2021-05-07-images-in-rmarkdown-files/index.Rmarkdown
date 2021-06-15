@@ -22,6 +22,8 @@ summary: The post investigates different methods to include images in `.Rmd` fil
   and how they are treated in the `blogdown` conversion process to .markdown files.
 ---
 
+::: {.notices .warning} Hello **world**! :::
+
 ## Using R chunk with `knitr`
 
 Using R chunks with `knitr` has the full features as outlined in the post [Images: From R Markdown to HTML format](../images-from-rmd-to-html-format/#example).

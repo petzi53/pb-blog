@@ -63,15 +63,10 @@ social:
   icon_pack: fab
   link: https://www.linkedin.com/in/peter-baumgartner-8879036/
 superuser: true
-
-
-
-
-
 ---
+
 <p>I am professor of Education Technology and was for 13 years head of the <a href="https://www.donau-uni.ac.at/en/university/faculties/education-arts-architecture/departments/continuing-education-research-educational-technologies.html" >Department of Interactive Media and Educational Technologies</a> (now renamed into Department for Continuing Education Research and Educational Technologies) at <a href="https://www.donau-uni.ac.at/en.html">Danube University Krems</a> (Austria). Since July 2019, I am retired.</p>
 
 <p>I had held positions as professor at several universities (Klagenfurt, Münster, Innsbruck, Hagen) before I accepted the nomination to Krems. I published 25 books (10 monographs and 15 edited volumes) and <a href="https://portfolio.peter-baumgartner.net/publication/">more than 200 articles</a>.</p>
 
-
-{{< icon name="download" pack="fas" >}} Download my {{< staticref "media/demo_resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
+{{< icon name="download" pack="fas" >}} Download my {{< staticref "media/baumgartner-cv-2021a.pdf" "newtab" >}}resumé{{< /staticref >}}.
