@@ -1,0 +1,52 @@
+---
+title: "Using Emojis Revisited"
+author: "Peter Baumgartner"
+date: '2021-08-30'
+slug: using-emojis-revisited
+categories:
+- Rmarkdown
+- package
+tags:
+- emo
+- emoji
+- unicode
+lastmod: null
+summary: How to insert into an R Markdown document a special emoji without knowing
+  the name or keyword? I encountered this problem in conjunction with some pull requests
+  for the  OpenIntro textbook Introduction to Modern Statistics. Already I reported
+  on in a [previous blog entry](https://notes.peter-baumgartner.net/2021/04/19/using-emojis-in-r-and-rmarkdown/),
+  but for this problem, I had to revisit this issue. for [interactive tutorials](https://github.com/OpenIntroStat/ims-tutorials)
+  for my experience with my first encounter with the [emo package](https://github.com/hadley/emo).
+commentable: yes
+draft: no
+side_toc: no
+image:
+  placement: 2
+  caption: Screenshot of the macOS window for symbols and emoticons
+  alt_text: Screenshot of the macOS window for symbols and emoticons
+  focal_point: Center
+  preview_only: no
+---
+
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+
+
+<p>I already <a href="https://notes.peter-baumgartner.net/2021/04/19/using-emojis-in-r-and-rmarkdown/">reported on my learnings</a> on the <a href="https://github.com/hadley/emo">emo package</a> in conjunction with some pull requests for <a href="https://github.com/OpenIntroStat/ims-tutorials">interactive tutorials</a> for the OpenIntro textbook <a href="https://openintro-ims.netlify.app/index.html">Introduction to Modern Statistics</a>. In the meanwhile, the book is — after some reorganization of its chapters — finished and published. I ordered the <a href="https://smile.amazon.de/Introduction-Modern-Statistics-Mine-%C3%87etinkaya-Rundel/dp/1943450145/">print version of the book via Amazon</a>.</p>
+<p>On August 13th, I started working through the tutorials and reading the new book and <a href="https://github.com/OpenIntroStat/ims-tutorials/pulls?q=is%3Apr+author%3Apetzi53+">prepared several pull requests</a>. There I encountered the problem of finding a special emoji without knowing the name or keyword. Meanwhile, I solved the difficulty of finding the emoji name for 🔟. There are even several solutions.</p>
+<ol style="list-style-type: decimal">
+<li><a href="https://github.com/mine-cetinkaya-rundel" title="GitHub account of Mine Cetinkaya-Rundel">Mine Cetinkaya-Rundel</a> referenced the <a href="emojiterra.com">EmojiTerra.com</a> website to me. There you can search for the symbol to get <a href="https://emojiterra.com/keycap-10/" title="Emoji Keycap-10 page on EmojiTerra">all the details of the corresponding emoji</a>.</li>
+<li>With <code>emo::ji_name</code>, you will get a list of 4239 names as character strings and their corresponding value as emoji. But you have to inspect the list manually, which really is not practical. (At least I did not find a better solution programmatically.)</li>
+<li>A more practical solution is to produce a data frame with <code>emojis_df &lt;- emo::jis</code> and to inspect it via the RStudio command <code>View(emojis_df)</code>. There you can put the emoji symbol into the search field to get the required information.</li>
+<li>You could also get the Unicode on macOS via the window for emojis and symbols (CMD-SHIFT-SPACE) with a right-click on the icon. You will get a bunch of localized information, including the Unicode.</li>
+</ol>
+<div class="figure">
+<img src="images/macOS-emoji-window-min.png" alt="" />
+<p class="caption">Screenshot of macOS window showing keycap-10 emoji</p>
+</div>
+<pre class="html"><code>🔟
+Taste mit der Zahl 10
+Unicode: U+1F51F, UTF-8: F0 9F 94 9F</code></pre>
+<div id="summary" class="section level2">
+<h2>Summary</h2>
+<p>All in all, just options 1 and 3 are feasible in a practical manner. Either to call the <a href="emojiterra.com">EmojiTerra.com</a> website or to use <code>View(emo::jis)</code> inside RStudio.</p>
+</div>
