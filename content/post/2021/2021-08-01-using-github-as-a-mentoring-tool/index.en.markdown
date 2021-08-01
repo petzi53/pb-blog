@@ -1,0 +1,256 @@
+---
+title: "Using GitHub as a Mentoring Tool"
+author: "Peter Baumgartner"
+date: '2021-08-01'
+slug: using-github-as-a-mentoring-tool
+categories:
+- data-science-education
+- edTech
+- teaching strategies
+tags:
+- github
+- ims
+- R Markdown
+- self-determined-learning
+subtitle: Looking Experts over their Shoulders
+summary: In this post, I summarize my learning problems to advance from an intermediate
+  R level. I suggest finding projects you are interested in and inspecting their codebase
+  at GitHub. In a certain sense, you could use the skills of those experienced persons
+  who guide the project/repository for mentoring your own learning advancement via
+  GitHub. Maybe there is even a possibility of getting involved in the project and
+  learning from relevant real-world challenges. --- My example is with R and GitHub,
+  but the learning strategy I recommend here should be usable for other programming
+  languages and other collaborative version control systems.
+authors: []
+lastmod: ''
+bibliography: ../../../../static/media/references.bib
+featured: no
+commentable: yes
+side_toc: yes
+draft: no
+image:
+  placement: 2
+  caption: 'What is mentoring? by Willow Brugh, [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:What_is_mentoring_(14805966275).jpg)'
+  alt_text: 'A chaart on "what is mentoring?" showing different questions and symbols referring to the relationship between mentor and mentee.'
+  focal_point: Center
+  preview_only: no
+---
+
+<script src="{{< blogdown/postref >}}index.en_files/kePrint/kePrint.js"></script>
+
+<link href="{{< blogdown/postref >}}index.en_files/lightable/lightable.css" rel="stylesheet" />
+
+## Beginner, Intermediate, and Expert Level
+
+For several years I am interested to learn [R](https://www.r-project.org/), the free software environment for statistical computing and graphics. After
+
+-   reading several books,
+-   finished some (paid) introductory (MOOC) courses successfully with Coursera
+-   and especially some smaller (paid) projects
+
+I would say that I am now (stuck?) on an intermediate skill level. I believe that this is the most challenging step in progressing to an expert for a self-determined learner. There are always so many different avenues to follow up. This is especially true with R and its
+
+-   ever increasing amount of new R packages (To date: 20010 ([MRAN](https://mran.revolutionanalytics.com/packages)) resp. 17954 ([CRAN](https://cran.r-project.org/)), 3452 ([Bioconductor](https://bioconductor.org/packages/release/BiocViews.html)).
+-   hundreds of books (see: the [searchable list on r-project.org](https://www.r-project.org/doc/bib/R-jabref.html), a [curated list on GitHub](https://github.com/RomanTsegelskyi/rbooks) by Roman Tselgelskyi, but also my [Wakelet on free R Books](https://wakelet.com/wake/d9cea021-06a5-406b-9b12-e7efd97ad144)
+-   an unknown number of (free) online tutorials (see the [general list](https://pairach.com/2012/06/17/r_tutorials_non-uni/) and [university listed](https://pairach.com/2012/06/17/r_tutorials_non-uni/) free R tutorials by Pairach Piboonrungroj and my [Wakelet on learn R programming](https://wakelet.com/wake/83de9b9e-63d6-46a2-a30e-3f4bec621ce2))
+
+Comparing my skill level with the three learner paths suggested by RStudio Education, I could affirm my personal assessment. From the six tasks proposals on the intermediate path
+
+-   grab some [R cheat sheets](https://www.rstudio.com/resources/cheatsheets/)
+-   learn to get help (see, for instance, my activities on [StackOverflow](https://stackoverflow.com/users/7322615/petzi))
+-   improve your visualizations
+-   develop interactive applications with [htmlwidgets](https://www.htmlwidgets.org/) and [Shiny](https://shiny.rstudio.com/)
+-   simplify your model explorations with [tidymodels](https://www.tidymodels.org/)
+-   explore other specialized packages
+
+I have some skills with the first three, and I also experimented already with Shiny. I even had worked on some steps at the expert levels by writing an R package: ([bib2academic](https://github.com/petzi53/bib2academic) got 16 stars, but I did not manage to submit it to [CRAN](https://cran.r-project.org/). It is now obsolete as a similar function was integrated into the Academic Hugo website (now [Wowchemy](https://wowchemy.com/) website builder).
+
+## Project for Motivation Necessary
+
+But to continue this path, I would need some strong motivation. I tried, for instance, to read the (not yet finished) book [Mastering Shiny](https://mastering-shiny.org/). As with all books and papers by Hadley Wickham, it is well written and exciting. But to learn continuously, I would need a practical project where I get not only real-world challenges but also a strong personal motivation to complete the product. In finishing the project/product, I would have to learn to overcome several real-world challenges where I would need to look for help and consult/experiment with several new functions or packages.
+
+But this strategy has two advantages:
+
+-   It is very laborious as the specific questions are not (yet) clear enough. Fora like [StackOverflow](https://stackoverflow.com/) are not suitable as the problem space is not delimited, a concrete coding question with a [REPREX](https://community.rstudio.com/t/faq-whats-a-reproducible-example-reprex-and-how-do-i-create-one/5219) (REPRoducible EXamples) is not available.
+-   It is error-prone and not efficient. Am I posing the right question? Do I look at the right places? It is not guaranteed that one finds the optimal solution. This is particularly awkward if the answer in the R community is very well known.
+
+## Looking for a Human Mentor
+
+I believe with a mentor, one could overcome these insecurities fast. The mentor — an experienced user — could ask questions to narrow the search space and point out helpful hints about what and where to look. Wikipedia, for instance, has established a similar program for their user community called Adopt-a-user.
+
+> The Adopt-a-user program is designed to help new and inexperienced users by pairing them with more experienced Wikipedians. These editors (referred to as adopters or mentors) will “adopt” newer users, guiding them along the way as they learn about Wikipedia and its various aspects. ([Wikipedia](https://en.wikipedia.org/wiki/Wikipedia:Adopt-a-user))
+
+In Wikipedia, the intention is to help *novice* contributors get orientation and some guided practice with the very complex rule set for writing or changing Wikipedia entries. My thought is to find a mentor to advance at the intermediate level. I think there is plenty of material for the R beginners freely available. But more important: You will learn R from scratch as an individual and do not need to worry at the beginning stage about an already developed complex rule which you have to observe and follow.
+
+As far as I know, there is no mentor program for R users. The next best alternative is a more open and friendly community. An excellent example, in my opinion, would be the [RStudio Community](https://community.rstudio.com/). But even there, you should have a concrete question to ask.
+
+## GitHub as a Mentoring Tool
+
+### An instructive example
+
+I recently found out that GitHub could be used as an educational tool. I will you give an example which was very exciting for me:
+
+Often I was confronted with the problem of how to calculate and format nicely a contingency table in R. The free web material on the web on this question is abound (e.g., [Datacamp](https://www.datacamp.com/community/tutorials/contingency-tables-r), [Data Science Central](https://www.datasciencecentral.com/profiles/blogs/contingency-tables-in-r), [R-Bloggers](https://www.r-bloggers.com/2020/12/contingency-tables-in-r/), [TechVidvan](https://techvidvan.com/tutorials/r-contingency-tables/), [Statology](https://www.statology.org/contingency-table-in-r/), …). But many examples still teach the Base R commands. They do not mention new procedures with the [tidydata approach](https://towardsdatascience.com/what-is-tidy-data-d58bb9ad2458) and related packages like [tidyr](https://tidyr.tidyverse.org/articles/tidy-data.html). And they do not worry about outputting the table in a publishing-ready format.
+
+There are many contingency tables published in the recently finished books [Introduction to Modern Statistics](https://openintro-ims.netlify.app/index.html).
+
+<table style="width: 75%; margin-left: auto; margin-right: auto;" class="table table-striped table-condensed">
+<caption>
+Table 1: Descriptive statistics for the stent study.
+</caption>
+<thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; border-bottom: 2px solid" colspan="2">
+
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+
+30 days
+
+</div>
+
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; border-bottom: 2px solid" colspan="2">
+
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+
+365 days
+
+</div>
+
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+Group
+</th>
+<th style="text-align:right;">
+Stroke
+</th>
+<th style="text-align:right;">
+No event
+</th>
+<th style="text-align:right;">
+Stroke
+</th>
+<th style="text-align:right;">
+No event
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;border-top: 2px solid">
+Control
+</td>
+<td style="text-align:right;border-top: 2px solid">
+13
+</td>
+<td style="text-align:right;border-top: 2px solid">
+214
+</td>
+<td style="text-align:right;border-top: 2px solid">
+28
+</td>
+<td style="text-align:right;border-top: 2px solid">
+199
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Treatment
+</td>
+<td style="text-align:right;">
+33
+</td>
+<td style="text-align:right;">
+191
+</td>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:right;">
+179
+</td>
+</tr>
+<tr>
+<td style="text-align:left;border-top: 2px solid">
+Total
+</td>
+<td style="text-align:right;border-top: 2px solid">
+46
+</td>
+<td style="text-align:right;border-top: 2px solid">
+405
+</td>
+<td style="text-align:right;border-top: 2px solid">
+73
+</td>
+<td style="text-align:right;border-top: 2px solid">
+378
+</td>
+</tr>
+</tbody>
+</table>
+
+I could look up the [source code from lines 85-101 via GitHub](https://github.com/openintrostat/ims/edit/master/01-data-hello.Rmd) and learn how to produce the above table. (In the following code chunk, I have focussed on the table appearance and left out different previous data transformations to prepare the two data sets [`stent30`](http://openintrostat.github.io/openintro/reference/stent30.html) and [`stent365`](http://openintrostat.github.io/openintro/reference/stent365.html). Furthermore, the code differs somewhat from the original due to some CSS styles of this website.).
+
+```` markdown
+```{r stent-study}
+suppressMessages(library(janitor))
+suppressMessages(library(kableExtra))
+suppressMessages(library(openintro))
+suppressMessages(library(tidyverse))
+
+stent %>%
+  mutate(group = str_to_title(group)) %>%
+  pivot_longer(cols = c(`30 days`, `365 days`), 
+               names_to = "stage", 
+               values_to = "outcome") %>%
+  count(group, stage, outcome) %>%
+  pivot_wider(names_from = c(stage, outcome), values_from = n) %>%
+  adorn_totals(where = "row") %>%
+  kbl(linesep = "", booktabs = TRUE, caption = "Descriptive statistics for the stent study.",
+      col.names = c("Group", "Stroke", "No event", "Stroke", "No event"),
+      table.attr = "style='width: 75%;'") %>%
+  add_header_above(c(" " = 1, "30 days" = 2, "365 days" = 2), extra_css = "border-bottom: 2px solid") %>%
+  row_spec(1, extra_css = "border-top: 2px solid") %>%
+  row_spec(3, extra_css = "border-top: 2px solid") %>%
+  kable_styling(bootstrap_options = c("striped", "condensed"), 
+                latex_options = c("striped", "hold_position"),
+                full_width = T, position = 'center')
+```
+````
+
+### Lesson learned
+
+Looking into the source code at GitHub, I learned several issues:
+
+-   I experimented already with the `janitor` package, and I am happy to get the confirmation that it is a widely used package to “provide quick counts of variable combinations (i.e., frequency tables and crosstabs)” and to “format \[nicely\] the tabulation results.” (From the Janitor package description.)
+-   I also did know about the `kableExtra` package and had the `kable_styling` function already used several times.
+-   The other `kableExtra` functions (`add_header_above()`, `row_spec()`, `kbl()`) I had not used before. Especially `add_header_above()` has an important role for special headings in contingency tables.
+-   The parameter `extra_css` was entirely new for me. I have never heard about it and didn’t even know that it exists.
+
+For me, this learning experience was very instructive! I admit that this example could have been asked via a friendly forum: For instance: “How could I produce a contingency table formatted professionally for print by using the tidyverse approach?” Additionally, one would have to provide some code to show where one stands and what approach one is using.
+
+### Looking Experts over their Shoulders
+
+But this was just one example where I knew about the problem and had already tried several approaches to find a solution. But what about code patterns I didn’t even know and could therefore not ask the right question?
+
+Finding a GitHub project with code snippets one needs urgently is just the beginning. There is a big chance that the same repository (aka ‘repo’) hides more code snippets to learn from. And maybe the person behind this one GitHub repos maintains other repositories that are also very interesting?
+
+In my case, it turned out that [Mine Çetakaya-Rundel](https://github.com/mine-cetinkaya-rundel), one of the authors and the person responsible for the repository management, has educational approaches that are similar to mine. But she is way off more skilled in R and statistics. I am especially interested in her usage of the `learnr` package for interactive tutorials and have watched a series of three videos on [Teaching Statistics and Data Science Online](https://mine-cetinkaya-rundel.github.io/teach-r-online/).
+
+In a certain sense, she functions as a mentor for me — even if she doesn’t know about it 🥸. Meanwhile, we had some exchanges on GitHub issues as I am interested in learning how to use the `learnr` package for introductions into statistics via R-Tutorials. Regularly if I find a problem as a user reading and following the tutorial exercises, I try to fix the code in my fork and send the [solutions as pull requests (PR)](https://github.com/OpenIntroStat/ims-tutorials/pulls?q=is%3Apr+author%3A%40me+) to Mine. Besides learning to use GitHub in a collaborative setting, I have already profited in many ways. I learned about packages I have never heard of (see, for example, the [list of packages used for the book](https://github.com/OpenIntroStat/ims/blob/master/_common.R)) and saw code snippets that transformed data in a much more elegant way as I used to do.
+
+## Summary
+
+To inspect code on GitHub is a suitable strategy for intermediate (programming) learners. I illustrated it with an R example, but I think you could generalize it as a learning strategy. I recommend the following steps:
+
+1.  **Note names and/or repositories you learned from successful internet recherche**. By searching answers or asking questions via StackOverflow, you will encounter the same names, blog addresses, Twitter messages, repos again and again.
+2.  **Look around if these person/websites generally work on problems you are interested in**. Look into the profile and follow the activities of these persons on their blog, Twitter, YouTube, GitHub … accounts.
+3.  **Decide on a person and select a specific project**. I recommend focusing not only on a particular person but also on picking one project to concentrate on. Ideally, it is a current project the person is still interested in and produces code you want to learn and use for your own work later on.
+4.  **Think about a possibility to get involved in the project**. The idea is to give the person and the community something back for its/their mentoring function and commit yourself to relevant real-world problems. The possibilities depend on your skills and interests. It may be advertising the project, writing a favorable review, fixing typos, commenting via the issue part of the repo, recommending code changes via PRs, or financially supporting the author(s) and/or the ongoing project.
+
+Finally, I would like to add also a warning: “Following” a person should not develop to stalking. It is essential not to be intrusive or pushy. You will see already after a short time if the person values your contribution(s), e.g., by answering friendly or thoughtfully, accepting your PRs, etc. If you get the impression that your engagement is disruptive, then stop it immediately. Either look at the code silently without interaction or try to find another “mentor” or project to get involved.
