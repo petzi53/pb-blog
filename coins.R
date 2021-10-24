@@ -58,7 +58,8 @@ write_coins <- function(path='') {
         readr::write_file(coinsString, path, append = TRUE)
     } else {
         # .Rmd files do not save pure HTML!!
-        coinsString <- paste("```{=html}", coinsString, "\n```\n")
+        # Does not work with other file types!!
+        ## coinsString <- paste("```{=html}", coinsString, "\n```\n")
         rstudioapi::insertText(c(Inf, 1), coinsString, id = txt$id)
         rstudioapi::documentSave(id = txt$id)
     }
