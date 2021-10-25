@@ -116,7 +116,7 @@ Due to their strict methodical approach, only the organizers of the restart part
 
 ## Aim of repairData package
 
-With the data preparation for the large R community, I hope that the data set will attract more attention and be examined more closely by statistics, visualization, and modeling experts. I myself also plan to take a closer look at the data as part of a paved R tutorial project.
+With the data preparation for the large R community, I hope that the data set will attract more attention and be examined more closely by statistics, visualization, and modeling experts. I myself also plan to take a closer look at the data as part of a planned R tutorial project.
 
 {{< figure src="images/repairData-screenshot-min.png" id="repair-data" alt="Screenshot of the repairData documentation page." title="Screenshot of the repairData documentation page, written with the pkgdown package." caption="Screenshot of the repairData documentation page, written with the pkgdown package." width="100%" numbered="true">}}
 
