@@ -12,7 +12,7 @@ lastmod: ''
 featured: no
 commentable: yes
 side_toc: yes
-draft: no
+draft: yes
 image:
   placement: 2
   caption: ''
@@ -21,6 +21,4 @@ image:
   preview_only: no
 ---
 
-::: {.notices .warning}
-Hello **world**!
-:::
+::: {.notices .warning} Hello **world**! :::
