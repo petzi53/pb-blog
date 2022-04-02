@@ -11,7 +11,7 @@ options(
   blogdown.ext = ".Rmarkdown", # '.Rmd', '.Rmarkdown' or '.md'
   # whenever changing method: delete files from previous knit and restart!
   blogdown.method = 'html', # 'html' (default), 'markdown' or 'custom'
-  blogdown.subdir = "post/2021",
+  blogdown.subdir = "post/2022",
   blogdown.yaml.empty	= TRUE	# Preserve empty fields in YAML?
 )
 
